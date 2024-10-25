@@ -1,0 +1,109 @@
+meta {
+  name: Event context
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/{{roomId}}/context/{{eventId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+tests {
+  // if (res.status === 200) {
+  //     // Get events
+  //     const eventsBefore = response.body.events_before;
+  //     const eventsAfter = response.body.events_after;
+  //     const selectedEvent = response.body.event;
+  // 
+  //     
+  // 
+  //     // Convert timestamps
+  //     eventsBefore.forEach((event) => {
+  //         const timeStamp = event.origin_server_ts;
+  //         const timeDate = new Date(timeStamp);
+  //         event.timeDate = timeDate;
+  //     });
+  // 
+  //     eventsAfter.forEach((event) => {
+  //         const timeStamp = event.origin_server_ts;
+  //         const timeDate = new Date(timeStamp);
+  //         event.timeDate = timeDate;
+  //     });
+  // 
+  //     const timeStamp = selectedEvent.origin_server_ts;
+  //     const timeDate = new Date(timeStamp);
+  //     selectedEvent.timeDate = timeDate;
+  // 
+  // 
+  // 
+  //     const template = `
+  //         <link rel="stylesheet" type="text/css" href="{{handlebarAssets.styleURL}}" />
+  //         <script src="{{handlebarAssets.javascriptURL}}"></script>
+  // 
+  //         <table>
+  //             <tr>
+  //                 <th>Zulu Time</th>
+  //                 <th>Sender</th>
+  //                 <th>Type</th>
+  //                 <th>Body</th>
+  //             </tr>
+  // 
+  //             <tr>
+  //                 <th colspan="3">Events before<th>
+  //             </tr>
+  // 
+  //             {{#each eventsBefore}}
+  //                 <tr>
+  //                     <td>{{timeDate}}</td>
+  //                     <td>{{sender}}</td>
+  //                     <td>{{type}}</td>
+  //                     <td>{{content.body}}</td>
+  //                 </tr>
+  //             {{/each}}
+  // 
+  //             <tr>
+  //                 <th colspan="3">Selected event<th>
+  //             </tr>
+  // 
+  //             <tr>
+  //                 <td>{{selectedEvent.timeDate}}</td>
+  //                 <td>{{selectedEvent.sender}}</td>
+  //                 <td>{{selectedEvent.type}}</td>
+  //                 <td>{{selectedEvent.content.body}}</td>
+  //             </tr>
+  // 
+  //             <tr>
+  //                 <th colspan="3">Events after<th>
+  //             </tr>
+  // 
+  //             {{#each eventsAfter}}
+  //                 <tr>
+  //                     <td>{{timeDate}}</td>
+  //                     <td>{{sender}}</td>
+  //                     <td>{{type}}</td>
+  //                     <td>{{content.body}}</td>
+  //                 </tr>
+  //             {{/each}}
+  // 
+  //         </table>
+  //     `;
+  // 
+  //     const handlebarAssets = {
+  //         'javascriptURL': `${pm.globals.get('assetsURL')}script.js`,
+  //         'styleURL': `${pm.globals.get('assetsURL')}style.css`,
+  //     }
+  //     pm.visualizer.set(template, {
+  //         handlebarAssets,
+  //         eventsBefore,
+  //         eventsAfter,
+  //         selectedEvent,
+  //     });
+  // }
+  // 
+}

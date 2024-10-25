@@ -1,0 +1,15 @@
+meta {
+  name: Purge quarantined media
+  type: http
+  seq: 13
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/purge/quarantined
+  body: none
+  auth: none
+}
+
+query {
+  access_token: {{mmrAdminSecret}}
+}

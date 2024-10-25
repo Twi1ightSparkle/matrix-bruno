@@ -1,0 +1,20 @@
+meta {
+  name: Query profile
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/federation/v1/query/profile?user_id=twilight
+  body: none
+  auth: bearer
+}
+
+query {
+  user_id: twilight
+  ~field: 
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

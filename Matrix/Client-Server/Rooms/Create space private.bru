@@ -1,0 +1,57 @@
+meta {
+  name: Create space private
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/createRoom
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "name": "space_name",
+    "topic": "",
+    "preset": "private_chat",
+    "visibility": "private",
+    "power_level_content_override": {
+      "events_default": 100,
+      "invite": 50
+    },
+    "creation_content": {
+      "type": "m.space"
+    },
+    "initial_state": [
+      {
+        "type": "m.room.guest_access",
+        "state_key": "",
+        "content": {
+          "guest_access": "can_join"
+        }
+      },
+      {
+        "type": "m.room.history_visibility",
+        "content": {
+          "history_visibility": "invited"
+        }
+      }
+    ]
+  }
+}
+
+script:post-response {
+  if (res.status === 200) {
+      const response = res.body;
+  
+      bru.setEnvVar("roomId", response.room_id);
+      if (response.room_alias_name) {
+          bru.setEnvVar("roomAlias", response.room_alias_name);
+      }
+  }
+}

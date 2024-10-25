@@ -1,0 +1,22 @@
+meta {
+  name: Login admin
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "identifier": {
+      "type": "m.id.user",
+      "user": "admin"
+    },
+    "password": "secret",
+    "type": "m.login.password"
+  }
+}

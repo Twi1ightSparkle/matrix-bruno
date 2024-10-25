@@ -1,0 +1,15 @@
+meta {
+  name: List of destinations
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/federation/destinations
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

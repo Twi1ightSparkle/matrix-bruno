@@ -1,0 +1,11 @@
+meta {
+  name: Get room from directory status
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/directory/list/room/{{roomId}}
+  body: none
+  auth: none
+}

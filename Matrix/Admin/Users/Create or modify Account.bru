@@ -1,0 +1,50 @@
+meta {
+  name: Create or modify Account
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/users/{{userId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "password": "user_password",
+    "displayname": "User",
+    "threepids": [
+      {
+        "medium": "email",
+        "address": "<user_mail_1>"
+      },
+      {
+        "medium": "email",
+        "address": "<user_mail_2>"
+      }
+    ],
+    "external_ids": [
+      {
+        "auth_provider": "<provider1>",
+        "external_id": "<user_id_provider_1>"
+      },
+      {
+        "auth_provider": "<provider2>",
+        "external_id": "<user_id_provider_2>"
+      }
+    ],
+    "avatar_url": "<avatar_url>",
+    "admin": false,
+    "deactivated": false,
+    "locked": false
+  }
+}
+
+vars:post-response {
+  userId: res.body.name
+}

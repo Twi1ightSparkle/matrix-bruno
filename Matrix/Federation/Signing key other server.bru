@@ -1,0 +1,11 @@
+meta {
+  name: Signing key other server
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/key/v2/query/matrix.org/ed25519:key_id
+  body: none
+  auth: none
+}

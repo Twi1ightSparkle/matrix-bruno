@@ -1,0 +1,15 @@
+meta {
+  name: Event reports
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/event_reports
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

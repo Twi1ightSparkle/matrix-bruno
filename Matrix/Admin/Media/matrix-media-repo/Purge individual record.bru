@@ -1,0 +1,15 @@
+meta {
+  name: Purge individual record
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/purge/{{url}}/{{mediaId}}?access_token={{mmrAdminSecret}}
+  body: none
+  auth: none
+}
+
+query {
+  access_token: {{mmrAdminSecret}}
+}

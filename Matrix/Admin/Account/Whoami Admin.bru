@@ -1,0 +1,15 @@
+meta {
+  name: Whoami Admin
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/account/whoami
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

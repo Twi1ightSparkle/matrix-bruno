@@ -1,0 +1,22 @@
+meta {
+  name: Delete room - no replacement
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/rooms/{{roomId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "block": false,
+    "purge": true
+  }
+}

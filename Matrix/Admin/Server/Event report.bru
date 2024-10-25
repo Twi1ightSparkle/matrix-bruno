@@ -1,0 +1,20 @@
+meta {
+  name: Event report
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/event_reports/12345
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+vars:post-response {
+  roomId: res.body.room_id,
+  eventId: res.body.event_id
+}

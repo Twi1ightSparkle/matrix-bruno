@@ -1,0 +1,21 @@
+meta {
+  name: Make room admin
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/{{roomId}}/make_room_admin
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "user_id": "{{userId}}"
+  }
+}

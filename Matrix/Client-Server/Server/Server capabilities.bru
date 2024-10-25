@@ -1,0 +1,15 @@
+meta {
+  name: Server capabilities
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/capabilities
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

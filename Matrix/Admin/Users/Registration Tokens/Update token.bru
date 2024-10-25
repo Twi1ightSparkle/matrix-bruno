@@ -1,0 +1,22 @@
+meta {
+  name: Update token
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/registration_tokens/defg
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "uses_allowed": 10,
+    "expiry_time": 1640995200000
+  }
+}

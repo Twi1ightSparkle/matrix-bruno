@@ -1,0 +1,15 @@
+meta {
+  name: Get media attributes
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/media/{{url}}/{{mediaId}}/attributes
+  body: none
+  auth: none
+}
+
+query {
+  access_token: {{mmrAdminSecret}}
+}

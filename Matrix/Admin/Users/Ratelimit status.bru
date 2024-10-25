@@ -1,0 +1,15 @@
+meta {
+  name: Ratelimit status
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/@localuser:{{url}}/override_ratelimit
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

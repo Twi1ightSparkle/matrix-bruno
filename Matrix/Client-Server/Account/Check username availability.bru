@@ -1,0 +1,19 @@
+meta {
+  name: Check username availability
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/register/available?username=localpart
+  body: none
+  auth: bearer
+}
+
+query {
+  username: localpart
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Login user
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "type": "m.login.password",
+    "identifier": {
+      "type": "m.id.user",
+      "user": "localpart"
+    },
+    "password": "password",
+    "initial_device_display_name": "1gpmllpo"
+  }
+}

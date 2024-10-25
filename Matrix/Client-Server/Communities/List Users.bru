@@ -1,0 +1,15 @@
+meta {
+  name: List Users
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/groups/{{community}}/users
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

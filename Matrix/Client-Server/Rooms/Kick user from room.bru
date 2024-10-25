@@ -1,0 +1,22 @@
+meta {
+  name: Kick user from room
+  type: http
+  seq: 12
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/state/m.room.member/{{userId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "membership": "leave",
+    "reason": "reasonForKick"
+  }
+}

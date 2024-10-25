@@ -1,0 +1,15 @@
+meta {
+  name: Background updates status
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/background_updates/status
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

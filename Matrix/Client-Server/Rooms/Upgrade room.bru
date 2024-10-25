@@ -1,0 +1,21 @@
+meta {
+  name: Upgrade room
+  type: http
+  seq: 23
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/rooms/{{roomId}}/upgrade
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "new_version": "9"
+  }
+}

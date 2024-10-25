@@ -1,0 +1,21 @@
+meta {
+  name: Invite user
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/invite
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "user_id": "{{userId}}"
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Federation tester JSON report
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://federationtester.matrix.org/api/report?server_name={{url}}
+  body: none
+  auth: none
+}
+
+query {
+  server_name: {{url}}
+}

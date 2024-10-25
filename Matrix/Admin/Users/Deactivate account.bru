@@ -1,0 +1,21 @@
+meta {
+  name: Deactivate account
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/deactivate/{{userId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+  	"erase": true
+  }
+}

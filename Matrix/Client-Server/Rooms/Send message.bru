@@ -1,0 +1,22 @@
+meta {
+  name: Send message
+  type: http
+  seq: 20
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/send/m.room.message/{{$timestamp}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+  	"msgtype":"m.text",
+  	"body":"some_text"
+  }
+}

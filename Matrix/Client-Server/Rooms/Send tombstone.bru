@@ -1,0 +1,21 @@
+meta {
+  name: Send tombstone
+  type: http
+  seq: 19
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/state/m.room.tombstone
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "replacement_room": "!newroom:{{url}}"
+  }
+}

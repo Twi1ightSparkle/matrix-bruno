@@ -1,0 +1,21 @@
+meta {
+  name: Recalculate the user directory
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/background_updates/start_job
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "job_name": "regenerate_directory"
+  }
+}

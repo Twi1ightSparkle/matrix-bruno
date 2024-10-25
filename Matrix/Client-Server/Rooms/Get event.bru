@@ -1,0 +1,15 @@
+meta {
+  name: Get event
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/rooms/{{roomId}}/event/{{eventId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

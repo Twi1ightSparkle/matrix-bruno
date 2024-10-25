@@ -1,0 +1,15 @@
+meta {
+  name: User shared rooms
+  type: http
+  seq: 24
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/unstable/uk.half-shot.msc2666/user/shared_rooms/{{userId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

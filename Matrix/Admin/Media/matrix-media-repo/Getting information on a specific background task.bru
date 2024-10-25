@@ -1,0 +1,15 @@
+meta {
+  name: Getting information on a specific background task
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/tasks/{{task_id}}
+  body: none
+  auth: none
+}
+
+query {
+  access_token: {{mmrAdminSecret}}
+}

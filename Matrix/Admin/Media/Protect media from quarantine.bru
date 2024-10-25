@@ -1,0 +1,15 @@
+meta {
+  name: Protect media from quarantine
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/protect/localMediaId
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

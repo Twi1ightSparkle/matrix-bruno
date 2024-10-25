@@ -1,0 +1,15 @@
+meta {
+  name: List all tokens
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/registration_tokens
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

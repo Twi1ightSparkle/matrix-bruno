@@ -1,0 +1,25 @@
+meta {
+  name: Delete room - create replacement room
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/{{roomId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "new_room_user_id": "@localUser:{{url}}",
+    "room_name": "Content Violation Notification",
+    "message": "Room has been shutdown due to content violations on this server. Please review our Terms of Service.",
+    "block": true,
+    "purge": true
+  }
+}

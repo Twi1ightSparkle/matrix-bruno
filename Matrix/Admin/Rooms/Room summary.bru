@@ -1,0 +1,160 @@
+meta {
+  name: Room summary
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/{{roomId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+tests {
+  // const template = `
+  // <link rel="stylesheet" type="text/css" href="{{handlebarAssets.styleURL}}" />
+  // <script src="{{handlebarAssets.javascriptURL}}"></script>
+  // 
+  // <table>
+  //     <tr>
+  //         <td>Room ID</td>
+  //         <td>
+  //             <span onclick="copy('{{room.room_id}}')">{{room.room_id}}</span>
+  //             <span onclick="copy('{{room.room_id}}', 'user')">🛠</span>
+  //             <span onclick="save('{{room.room_id}}', 'userId')">💾</span>
+  //         </td>
+  //     </tr>
+  //     <tr>
+  //         <td>Name</td>
+  //         <td><span onclick="copy('{{room.name}}')">{{room.name}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>Topic</td>
+  //         <td><span onclick="copy('{{room.topic}}')">{{room.topic}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>Canonical Alias</td>
+  //     <td>
+  //         <span onclick="copy('{{room.canonical_alias}}')">{{room.canonical_alias}}</span>
+  //         <span onclick="copy('{{room.canonical_alias}}', 'user')">🛠</span>
+  //         <span onclick="save('{{room.canonical_alias}}', 'alias')">💾</span>
+  //     </td>
+  //     <tr>
+  //         <td>Joined members</td>
+  //         <td><span onclick="copy('{{room.joined_members}}')">{{room.joined_members}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>Joined Local Members</td>
+  //         <td><span onclick="copy('{{room.joined_local_members}}')">{{room.joined_local_members}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>Joined Local Devices</td>
+  //         <td><span onclick="copy('{{room.joined_local_devices}}')">{{room.joined_local_devices}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>Room Version</td>
+  //         <td><span onclick="copy('{{room.version}}')">{{room.version}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>Creator ID</td>
+  //         <td>
+  //             <span onclick="copy('{{room.creator}}')">{{room.creator}}</span>
+  //             <span onclick="copy('{{room.creator}}', 'user')">🛠</span>
+  //             <span onclick="save('{{room.creator}}', 'userId')">💾</span>
+  //         </td>
+  //     </tr>
+  //     <tr>
+  //         <td>Encrypted</td>
+  //         <td><span onclick="copy('{{room.encryption}}')">{{room.encryption}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>Federatable</td>
+  //         <td><span onclick="copy('{{room.federatable}}')">{{room.federatable}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td title="Publish this room to the public in serverDomain.com's room directory?">In Room directory</td>
+  //         <td><span onclick="copy('{{room.public}}')">{{room.public}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td title="Access. Decide who can join {{room.name}}.">Join Rules</td>
+  //         <td><span onclick="copy('{{room.join_rules}}')">{{room.join_rules}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td title="Access. Show advanced. Enable guest access">Guest Access</td>
+  //         <td><span onclick="copy('{{room.guest_access}}')">{{room.guest_access}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>History Visibility</td>
+  //         <td><span onclick="copy('{{room.history_visibility}}')">{{room.history_visibility}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>State Events</td>
+  //         <td><span onclick="copy('{{room.state_events}}')">{{room.state_events}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>Room Complexity</td>
+  //         <td><span onclick="copy('{{room.complexity}}')">{{room.complexity}}</span></td>
+  //     </tr>
+  //     <tr>
+  //         <td>Avatar</td>
+  //         <td>
+  //             {{#if room.avatar}}
+  //                 <img src="{{room.avatar}}" onclick="copy('{{room.avatar}}')" style="max-height: 200px; max-width: 200px;" class="pointer">
+  //             {{else}}
+  //                 none
+  //             {{/if}}
+  //         </td>
+  //     </tr>
+  // </table>
+  // `;
+  // 
+  // // Strings for printing keywords using the human-readable string from Element
+  // const room_strings = {
+  //     'guest_access': {
+  //         'can_join': 'Enabled',
+  //         'forbidden': ' Disabled',
+  //     },
+  //     'history_visibility': {
+  //         'invited': 'Members only (since they were invited)',
+  //         'joined': 'Members only (since they joined)',
+  //         'shared': 'Members only (since the point in time of selecting this option)',
+  //         'world_readable': 'Anyone',
+  //     },
+  //     'join_rules': {
+  //         'invite': 'Private (invite only) - Only invited people can join',
+  //         'public': 'Public - Anyone can find and join',
+  //         'restricted': 'Space members - Anyone in a space can find and join',
+  //     },
+  // };
+  // 
+  // // room_strings.guest_access[stateEvent.content.guest_access] || stateEvent.content.guest_access;
+  // 
+  // if (res.status === 200) {
+  //     const room = response.body;
+  // 
+  //     room.canonical_alias = room.canonical_alias || 'none';
+  //     room.encryption = (room.encryption) ? 'Yes' : 'no';
+  //     room.federatable = (room.federatable) ? 'Yes' : 'No';
+  //     room.public = (room.public) ? 'Yes' : 'No';
+  //     room.join_rules = room_strings.join_rules[room.join_rules] || room.join_rules;
+  //     room.guest_access = room_strings.guest_access[room.guest_access] || room.guest_access;
+  //     room.history_visibility = room_strings.history_visibility[room.history_visibility] || room.history_visibility;
+  //     room.avatar = (room.avatar) ? room.avatar.replace('mxc://', `https://${bru.getEnvVar("delegatedURL")}/_matrix/media/r0/download/`) : null;
+  //     room.topic = room.topic || 'none';
+  //     room.complexity = (room.state_events / 500).toFixed(2);
+  // 
+  //     const handlebarAssets = {
+  //         'javascriptURL': `${pm.globals.get('assetsURL')}script.js`,
+  //         'styleURL': `${pm.globals.get('assetsURL')}style.css`,
+  //     }
+  //     pm.visualizer.set(template, {
+  //         handlebarAssets,
+  //         room,
+  //     });
+  // }
+  // 
+}

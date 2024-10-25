@@ -1,0 +1,15 @@
+meta {
+  name: Get room power levels
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/state/m.room.power_levels
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

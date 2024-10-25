@@ -1,0 +1,30 @@
+meta {
+  name: Set room power levels
+  type: http
+  seq: 18
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/state/m.room.power_levels
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "ban": 50,
+    "events": {},
+    "events_default": 50,
+    "kick": 50,
+    "redact": 50,
+    "state_default": 100,
+    "users": {
+      "@localUser:{{url}}": 100
+    },
+    "users_default": -1
+  }
+}

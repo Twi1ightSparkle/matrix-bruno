@@ -1,0 +1,15 @@
+meta {
+  name: Shadowban
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/{{userId}}/shadow_ban
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

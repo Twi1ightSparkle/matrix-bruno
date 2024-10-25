@@ -1,0 +1,21 @@
+meta {
+  name: Alias unset canonical
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/state/m.room.canonical_alias
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "use-output-from-the-get-request: alt_aliases": []
+  }
+}

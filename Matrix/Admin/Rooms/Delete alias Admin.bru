@@ -1,0 +1,15 @@
+meta {
+  name: Delete alias Admin
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/directory/room/%23alias:{{url}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

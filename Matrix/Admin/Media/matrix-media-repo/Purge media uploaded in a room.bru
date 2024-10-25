@@ -1,0 +1,16 @@
+meta {
+  name: Purge media uploaded in a room
+  type: http
+  seq: 14
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/purge/room/{{roomId}}?before_ts=1234567890000&access_token={{mmrAdminSecret}}
+  body: none
+  auth: none
+}
+
+query {
+  before_ts: 1234567890000
+  access_token: {{mmrAdminSecret}}
+}
