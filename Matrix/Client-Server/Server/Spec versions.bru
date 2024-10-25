@@ -1,0 +1,15 @@
+meta {
+  name: Spec versions
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/versions
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

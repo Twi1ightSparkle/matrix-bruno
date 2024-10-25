@@ -1,0 +1,15 @@
+meta {
+  name: Quarantine media - Synapse media repo
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/quarantine/{{url}}/{{mediaId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

@@ -1,0 +1,61 @@
+meta {
+  name: Create room
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/createRoom
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "name": "sampleRoom",
+    "topic": "sampleRoom",
+    "visibility": "private",
+    "room_alias_name": "sampleRoom",
+    "preset": "private_chat",
+    "room_id": "!sampleRoom:{{url}}",
+    "room_version": "8",
+    "creation_content": {
+      "predecessor": {
+        "room_id": "!roomIdOfOldRoom",
+        "event_id": "$tombstoneEventIdInOldRoom"
+      },
+      "m.federate": true
+    },
+    "initial_state": [
+      {
+        "type": "m.room.guest_access",
+        "state_key": "",
+        "content": {
+          "guest_access": "can_join"
+        }
+      },
+      {
+        "type": "m.room.encryption",
+        "state_key": "",
+        "content": {
+          "algorithm": "m.megolm.v1.aes-sha2"
+        }
+      }
+    ]
+  }
+}
+
+script:post-response {
+  if (res.status === 200) {
+      const response = res.body;
+  
+      bru.setEnvVar("roomId", response.room_id);
+      if (response.room_alias_name) {
+          bru.setEnvVar("roomAlias", response.room_alias_name);
+      }
+  }
+}

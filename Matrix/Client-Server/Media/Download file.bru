@@ -1,0 +1,11 @@
+meta {
+  name: Download file
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/r0/download/{{url}}/{{mediaId}}
+  body: none
+  auth: none
+}

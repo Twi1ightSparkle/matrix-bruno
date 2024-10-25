@@ -1,0 +1,11 @@
+meta {
+  name: Matrix server version
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/federation/v1/version
+  body: none
+  auth: none
+}

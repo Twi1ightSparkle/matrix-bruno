@@ -1,0 +1,21 @@
+meta {
+  name: Toggle Synapse admin
+  type: http
+  seq: 16
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/{{userId}}/admin
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "admin": false
+  }
+}

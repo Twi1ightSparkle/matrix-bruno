@@ -1,0 +1,21 @@
+meta {
+  name: Redact event
+  type: http
+  seq: 13
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/redact/{{eventId}}/{{$timestamp}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "reason": "test"
+  }
+}

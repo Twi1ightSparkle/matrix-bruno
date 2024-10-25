@@ -1,0 +1,19 @@
+meta {
+  name: Log in as user
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/{{userId}}/login
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {}
+}

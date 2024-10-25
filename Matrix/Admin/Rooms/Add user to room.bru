@@ -1,0 +1,21 @@
+meta {
+  name: Add user to room
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/join/{{roomId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "user_id": "@user:{{url}}"
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Room members
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/{{roomId}}/members
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

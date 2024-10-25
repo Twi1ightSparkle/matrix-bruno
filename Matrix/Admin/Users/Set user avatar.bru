@@ -1,0 +1,21 @@
+meta {
+  name: Set user avatar
+  type: http
+  seq: 12
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/users/{{userId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "avatar_url": "mxc://{{url}}/abcd"
+  }
+}

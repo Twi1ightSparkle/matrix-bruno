@@ -1,0 +1,15 @@
+meta {
+  name: Summary
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/groups/{{community}}/summary
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

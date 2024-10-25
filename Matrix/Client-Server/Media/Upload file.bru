@@ -1,0 +1,29 @@
+meta {
+  name: Upload file
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/r0/upload
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  : @file(/path/to/file.png)
+}
+
+script:post-response {
+  if (res.status === 200) {
+    const data = res.body;
+    const mxc_uri = data.content_uri;
+    const uri = String(mxc_uri).replace('mxc://', '');
+    const media_id = uri.split('/')[1];
+    bru.setEnvVar("mediaId", media_id);
+  }
+}

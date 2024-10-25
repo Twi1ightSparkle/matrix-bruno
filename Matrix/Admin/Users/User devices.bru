@@ -1,0 +1,15 @@
+meta {
+  name: User devices
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/users/{{userId}}/devices
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Remove room from directory
+  type: http
+  seq: 12
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/directory/list/room/{{roomId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "visibility": "private"
+  }
+}

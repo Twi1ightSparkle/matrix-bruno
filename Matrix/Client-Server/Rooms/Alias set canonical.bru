@@ -1,0 +1,22 @@
+meta {
+  name: Alias set canonical
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/state/m.room.canonical_alias
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "invalid-remove-this: alias": "%23alias:{{url}}",
+    "use-output-from-the-get-request: alt_aliases": []
+  }
+}

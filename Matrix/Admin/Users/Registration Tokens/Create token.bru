@@ -1,0 +1,24 @@
+meta {
+  name: Create token
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/registration_tokens/new
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "token": "secret",
+    "uses_allowed": 10,
+    "expiry_time": 1640995200000,
+    "length": 64
+  }
+}

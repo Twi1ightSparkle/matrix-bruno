@@ -1,0 +1,15 @@
+meta {
+  name: List Rooms
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/groups/{{community}}/rooms
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

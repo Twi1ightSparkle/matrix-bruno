@@ -1,0 +1,19 @@
+meta {
+  name: Find user by External ID
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/auth_providers/{{authProvider}}/users/{{externalId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+vars:post-response {
+  userId: res.body.user_id
+}

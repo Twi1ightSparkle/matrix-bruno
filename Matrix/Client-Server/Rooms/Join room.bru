@@ -1,0 +1,15 @@
+meta {
+  name: Join room
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/join/{{roomId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

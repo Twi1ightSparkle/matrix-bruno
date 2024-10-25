@@ -1,0 +1,15 @@
+meta {
+  name: Alias get canonical
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/state/m.room.canonical_alias
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

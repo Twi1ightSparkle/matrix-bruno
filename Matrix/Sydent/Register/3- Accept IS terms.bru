@@ -1,0 +1,23 @@
+meta {
+  name: 3- Accept IS terms
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://vector.im/_matrix/identity/v2/terms
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{sydentToken}}
+}
+
+body:json {
+  {
+    "user_accepts": [
+      "https://vector.im/identity-server-privacy-notice-1"
+    ]
+  }
+}

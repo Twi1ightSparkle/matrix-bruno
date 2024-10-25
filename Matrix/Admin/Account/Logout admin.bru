@@ -1,0 +1,19 @@
+meta {
+  name: Logout admin
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/logout
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+vars:post-response {
+  adminToken: 
+}

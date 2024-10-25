@@ -1,0 +1,15 @@
+meta {
+  name: Delist room
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/directory/list/room/{{roomId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Account Data
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/{{userId}}/accountdata
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

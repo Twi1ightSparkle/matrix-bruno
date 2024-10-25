@@ -1,0 +1,25 @@
+meta {
+  name: Look up email
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://vector.im/_matrix/identity/v2/lookup
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{sydentToken}}
+}
+
+body:json {
+  {
+    "addresses": [
+      "someone@domain.com email"
+    ],
+    "algorithm": "none",
+    "pepper": "ab123"
+  }
+}

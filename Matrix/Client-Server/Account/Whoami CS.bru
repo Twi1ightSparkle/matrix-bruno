@@ -1,0 +1,19 @@
+meta {
+  name: Whoami CS
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/account/whoami
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+vars:post-response {
+  userId: res.body.user_id
+}

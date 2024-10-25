@@ -1,0 +1,21 @@
+meta {
+  name: Account data set clobal
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/user/{{userId}}/account_data/type
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "custom_account_data_key": "custom_config_value"
+  }
+}

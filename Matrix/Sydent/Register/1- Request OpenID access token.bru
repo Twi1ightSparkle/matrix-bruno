@@ -1,0 +1,23 @@
+meta {
+  name: 1- Request OpenID access token
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/user/{{userId}}/openid/request_token
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {}
+}
+
+vars:post-response {
+  openidToken: res.body.access_token
+}

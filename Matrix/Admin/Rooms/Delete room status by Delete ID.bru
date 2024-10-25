@@ -1,0 +1,15 @@
+meta {
+  name: Delete room status by Delete ID
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/rooms/delete_status/{{deleteId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

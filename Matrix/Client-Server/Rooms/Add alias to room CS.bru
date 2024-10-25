@@ -1,0 +1,21 @@
+meta {
+  name: Add alias to room CS
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/directory/room/%23alias:{{url}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "room_id": "{{roomId}}"
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Estimating size of a datastore
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/datastores/{{datastore}}/size_estimate
+  body: none
+  auth: none
+}
+
+query {
+  access_token: {{mmrAdminSecret}}
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Room aliases
+  type: http
+  seq: 13
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/rooms/{{roomId}}/aliases
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}

@@ -1,0 +1,492 @@
+meta {
+  name: Room state Admin
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/{{roomId}}/state
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+tests {
+//   const template = `
+//   <!--   <link rel="stylesheet" type="text/css" href="{{handlebarAssets.styleURL}}" />
+//      <script src="{{handlebarAssets.javascriptURL}}"></script>-->
+  
+//   <table>
+//       <tr>
+//           <td>Room name</td>
+//           <td><span onclick="copy('{{details.name}}')">{{details.name}}</span></td>
+//       </tr>
+//       <tr>
+//           <td>Room topic</td>
+//           <td><span onclick="copy('{{details.topic}}')">{{details.topic}}</span></td>
+//       </tr>
+//       <tr>
+//           <td>Room ID</td>
+//           <td>
+//               <span onclick="copy('{{details.room_id}}')">{{details.room_id}}</span>
+//               <span onclick="copy('{{details.room_id}}', 'room')">🛠</span>
+//               <span onclick="save('{{details.room_id}}', 'roomId')">💾</span>
+//           </td>
+//       </tr>
+//       <tr>
+//           <td>Room creator</td>
+//           <td>
+//               <span onclick="copy('{{details.room_creator}}')">{{details.room_creator}}</span>
+//               <span onclick="copy('{{details.room_creator}}', 'user')">🛠</span>
+//               <span onclick="save('{{details.room_creator}}', 'userId')">💾</span>
+//           </td>
+//       </tr>
+//       <tr>
+//           <td>Room creation time</td>
+//           <td><span onclick="copy('{{details.room_creation_time}}')">{{details.room_creation_time}}</span></td>
+//       </tr>
+//       <tr>
+//           <td>Room version</td>
+//           <td><span onclick="copy('{{details.room_version}}')">{{details.room_version}}</span></td>
+//       </tr>
+//       <tr>
+//           <td>Guest access</td>
+//           <td><span onclick="copy('{{details.guest_access}}')">{{details.guest_access}}</span></td>
+//       </tr>
+//       <tr>
+//           <td>History visibility</td>
+//           <td><span onclick="copy('{{details.history_visibility}}')">{{details.history_visibility}}</span></td>
+//       </tr>
+  
+//       <tr>
+//           <td>Join rules</td>
+//           <td><span onclick="copy('{{details.join_rules}}')">{{details.join_rules}}</span></td>
+//       </tr>
+  
+//       {{#if allow_rooms}}
+//       <tr>
+//           <td>Spaces with access</td>
+//           <td>
+//               {{#each allow_rooms}}
+//                   <span onclick="copy('{{room_id}}')">{{room_id}}</span>
+//               <span onclick="copy('{{room_id}}', 'room')">🛠</span>
+//               <span onclick="save('{{room_id}}', 'roomId')">💾</span>
+//               {{/each}}
+//           </td>
+//       </tr>
+//       {{/if}}
+  
+//       <tr>
+//           <td>Canonical alias</td>
+//           <td>
+//               <span onclick="copy('{{details.Call}}')">{{details.canonical_alias}}</span>
+//               <span onclick="copy('{{details.canonical_alias}}', 'room')">🛠</span>
+//               <span onclick="save('{{details.canonical_alias}}', 'roomAlias')">💾</span>
+//           </td>
+//       </tr>
+  
+//       {{#if alias_array}}
+//       <tr>
+//           <td>Room aliases</td>
+//           <td>
+//               {{#each alias_array}}
+//                   <span onclick="copy('{{alias}}')">{{alias}}</span>
+//                   <span onclick="copy('{{alias}}', 'room')">🛠</span>
+//                   <span onclick="save('{{alias}}', 'roomAlias')">💾</span><br />
+//               {{/each}}
+//           </td>
+//       </tr>
+//       {{/if}}
+  
+//       {{#each predecessors}}
+//       <tr>
+//           <td>Predecessor room ID</td>
+//           <td>
+//               <span onclick="copy('{{predecessor_room_id}}')">{{predecessor_room_id}}</span>
+//               <span onclick="copy('{{predecessor_room_id}}', 'room')">🛠</span>
+//               <span onclick="save('{{predecessor_room_id}}', 'roomId')">💾</span>
+//           </td>
+//       </tr>
+//       {{/each}}
+  
+//       {{#each tombstones}}
+//       <tr>
+//           <td>Tombstone body</td>
+//           <td><span onclick="copy('{{tombstone_body}}')">{{tombstone_body}}</span></td>
+//       </tr>
+//       <tr>
+//           <td>Tombstone replacement room ID</td>
+//           <td>
+//               <span onclick="copy('{{replacement_room}}')">{{replacement_room}}</span>
+//               <span onclick="copy('{{replacement_room}}', 'room')">🛠</span>
+//               <span onclick="save('{{replacement_room}}', 'roomId')">💾</span>
+//           </td>
+//       </tr>
+//       <tr>
+//           <td>Tombstone time</td>
+//           <td><span onclick="copy('{{tombstone_time}}')">{{tombstone_time}}</span></td>
+//       </tr>
+//       <tr>
+//           <td>Tombstone sender</td>
+//           <td>
+//               <span onclick="copy('{{tombstone_sender}}')">{{tombstone_sender}}</span>
+//               <span onclick="copy('{{tombstone_sender}}', 'user')">🛠</span>
+//               <span onclick="save('{{tombstone_sender}}', 'userId')">💾</span>
+//           </td>
+//       </tr>
+//       {{/each}}
+  
+//       <tr>
+//           <td>Avatar</td>
+//           <td>
+//               {{#if details.avatar}}
+//                   <img src="{{details.avatar}}" onclick="copy('{{details.avatar}}')" style="max-height: 200px; max-width: 200px;" class="pointer">
+//               {{else}}
+//                   none
+//               {{/if}}
+//           </td>
+//       </tr>
+  
+//       <tr>
+//           <td>Default user power level</td>
+//           <td><span onclick="copy('{{details.users_default}}')">{{details.users_default}}</span></td>
+//       </tr>
+  
+//       <tr>
+//           <td>Power level events</td>
+//           <td>
+//               {{#each pl_events}}
+//                   <span onclick="copy('{{event}}')">{{event}}</span><br />
+//               {{/each}}
+//           </td>
+//       </tr>
+  
+//       <tr>
+//           <td>Power levels</td>
+//           <td>
+//               {{#each power_levels}}
+//                   <span onclick="copy('{{pl}}')">{{pl}}</span><br />
+//               {{/each}}
+//           </td>
+//       </tr>
+  
+//       <tr>
+//           <td>Privileged users</td>
+//           <td>
+//               {{#each privileged_users}}
+//                   <span onclick="copy('{{user}}')">{{user}}</span>
+//                   <span onclick="copy('{{user}}', 'user')">🛠</span>
+//                   <span onclick="save('{{user}}', 'userId')">💾</span><br />
+//               {{/each}}
+//           </td>
+//       </tr>
+  
+//       {{#if restricted_users}}
+//           <tr>
+//               <td>Restricted users</td>
+//               <td>
+//                   {{#each restricted_users}}
+//                       <span onclick="copy('{{user}}')">{{user}}</span>
+//                       <span onclick="copy('{{user}}', 'user')">🛠</span>
+//                       <span onclick="save('{{user}}', 'userId')">💾</span><br />
+//                   {{/each}}
+//               </td>
+//           </tr>
+//       {{/if}}
+  
+//       {{#if server_acls}}
+//           <tr>
+//               <td>Server ACLs</td>
+//               <td>
+//                   <ul>
+//                       {{#each server_acls}}
+//                           <li><span onclick="copy('{{this}}')">{{this}}</span></li>
+//                       {{/each}}
+//                   </ul>
+//               </td>
+//           </tr>
+//       {{/if}}
+  
+//       <tr>
+//           <td>Room members</td>
+//           <td>
+//               {{#each members}}
+//                   <span onclick="copy('{{@key}}')">{{@key}}</span>
+//                   <span onclick="copy('{{@key}}', 'user')">🛠</span>
+//                   <span onclick="save('{{@key}}', 'userId')">💾</span><br />
+//                   {{#each this}}
+//                           &#9;- <b>Time: <span onclick="copy('{{this.time}}')">{{this.time}}</span></b><br />
+//                           &#9;- Membership: <span onclick="copy('{{this.membership\}}')">{{this.membership}}</span><br />
+//                           {{#if this.avatar_url}}
+//                           &#9;- Displayname: <span onclick="copy('{{this.displayname}}')">{{this.displayname}}</span><br />
+//                           &#9;- Avatar URL: <span onclick="copy('{{this.avatar_url}}')">{{this.avatar_url}}</span><br />
+//                           {{/if}}
+//                   {{/each}}
+//                   <br />
+//               {{/each}}
+//           </td>
+//       </tr>
+//   `;
+  
+//   // Strings for printing keywords using the human-readable string from Element
+//   const room_strings = {
+//       'guest_access': {
+//           'can_join': 'Enabled',
+//           'forbidden': ' Disabled',
+//       },
+//       'history_visibility': {
+//           'invited': 'Members only (since they were invited)',
+//           'joined': 'Members only (since they joined)',
+//           'shared': 'Members only (since the point in time of selecting this option)',
+//           'world_readable': 'Anyone',
+//       },
+//       'join_rules': {
+//           'invite': 'Private (invite only) - Only invited people can join',
+//           'public': 'Public - Anyone can find and join',
+//           'restricted': 'Space members - Anyone in a space can find and join',
+//       },
+//   };
+  
+//   // Store details about the room
+//   const details = {
+//       'avatar': null,
+//       'canonical_alias': 'none',
+//       'name': 'none',
+//       'topic': 'none',
+//   };
+  
+//   // To keep track of the latest state event. To ensure only the latest one is used
+//   const latest = {
+//       'avatar': 0,
+//       'canonical_alias': 0,
+//       'guest_access': 0,
+//       'history_visibility': 0,
+//       'join_rules': 0,
+//       'name': 0,
+//       'power_levels': 0,
+//       'topic': 0,
+//   }
+  
+//   // Store data about the room in these variables
+//   const allow_rooms = [];
+//   const aliases = new Set();
+//   const members = {};
+//   const predecessors = [];
+//   let privileged_users = [];
+//   let pl_events = [];
+//   let power_levels = [];
+//   let restricted_users = [];
+//   let server_acls = [];
+//   const tombstones = [];
+  
+//   if (res.status === 200) {
+//     //   const response = response.body;
+//       const response = req.getBody();
+//       // This "if" is because the CS and Admin API return with different format.
+//       // Allows the same test to be copy-pasted unedited between the two.
+//       let state;
+//       if (typeof response.state === 'undefined') {
+//           state = response;
+//       } else {
+//           state = response.state;
+//       }
+  
+//       state.forEach(stateEvent => {
+//           if (stateEvent.type === 'm.room.aliases') {
+//               // Ensure no malformed or empty arrays are attempted processed
+//               if (Array.isArray(stateEvent.content.aliases) && stateEvent.content.aliases.length > 0) {
+//                   stateEvent.content.aliases.forEach(alias => {
+//                       // Since aliases is a Set, uniqueness is ensured automatically
+//                       aliases.add({ alias });
+//                   });
+//               }
+//           }
+  
+  
+//           if (stateEvent.type === 'm.room.avatar') {
+//               if (stateEvent.origin_server_ts > latest.avatar) {
+//                   details.avatar = stateEvent.content.url?.replace('mxc://', `https://${bru.getEnvVar("delegatedURL")}/_matrix/media/r0/download/`) || 'none';
+//               }
+//           }
+  
+//           if (stateEvent.type === 'm.room.canonical_alias') {
+//               // Ensure only the latest state event is processed and saved/printed
+//               if (stateEvent.origin_server_ts > latest.canonical_alias) {
+//                   latest.canonical_alias = stateEvent.origin_server_ts;
+//                   details.canonical_alias = stateEvent.content.alias;
+//               }
+//           }
+  
+//           if (stateEvent.type === 'm.room.create') {
+//               details.room_id = stateEvent.room_id;
+//               details.room_creator = stateEvent.content.creator;
+//               details.room_creation_time = new Date(stateEvent.origin_server_ts);
+//               details.room_version = stateEvent.content.room_version;
+  
+//               if ('predecessor' in stateEvent.content) {
+//                   predecessors.push({ 'predecessor_room_id': stateEvent.content.predecessor.room_id })
+//               };
+//           }
+  
+//           if (stateEvent.type === 'm.room.guest_access') {
+//               // Ensure only the latest state event is processed and saved/printed
+//               if (stateEvent.origin_server_ts > latest.guest_access) {
+//                   latest.guest_access = stateEvent.origin_server_ts;
+//                   details.guest_access = room_strings.guest_access[stateEvent.content.guest_access] || stateEvent.content.guest_access;
+//               }
+//           }
+  
+//           if (stateEvent.type === 'm.room.history_visibility') {
+//               // Ensure only the latest state event is processed and saved/printed
+//               if (stateEvent.origin_server_ts > latest.history_visibility) {
+//                   latest.history_visibility = stateEvent.origin_server_ts;
+//                   details.history_visibility = room_strings.history_visibility[stateEvent.content.history_visibility] || stateEvent.content.history_visibility;
+//               }
+//           }
+  
+//           if (stateEvent.type === 'm.room.join_rules') {
+//               // Ensure only the latest state event is processed and saved/printed
+//               if (stateEvent.origin_server_ts > latest.join_rules) {
+//                   latest.join_rules = stateEvent.origin_server_ts;
+//                   details.join_rules = room_strings.join_rules[stateEvent.content.join_rule] || stateEvent.content.join_rule;
+  
+//                   if (stateEvent.content.join_rule === 'restricted') {
+//                       stateEvent.content.allow.forEach(room => {
+//                           allow_rooms.push({ 'room_id': `${room.type}: ${room.room_id}` });
+//                       });
+//                   }
+//               }
+//           }
+  
+//           if (stateEvent.type === 'm.room.member') {
+//               // Only include joins and leavea
+//               if (stateEvent.content.membership === 'join' || stateEvent.content.membership === 'leave') {
+//                   // Initialize an array on this user if first time seeing it
+//                   members[stateEvent.user_id] = (typeof (members[stateEvent.user_id]) === 'undefined') ?
+//                       [] :
+//                       members[stateEvent.user_id];
+  
+//                   // Inclde for goth joins and leaves
+//                   let event = {
+//                       'membership': stateEvent.content.membership,
+//                       'time': new Date(stateEvent.origin_server_ts),
+//                   };
+  
+//                   // Additional information to include for joins
+//                   if (stateEvent.content.membership === 'join') {
+//                       event = {
+//                           ...event,
+//                           'avatar_url': (stateEvent.content.avatar_url) ?
+//                               stateEvent.content.avatar_url?.replace('mxc://', `https://${bru.getEnvVar("delegatedURL")}/_matrix/media/r0/download/`) :
+//                               'none',
+//                           'displayname': (stateEvent.content.displayname) ?
+//                               stateEvent.content.displayname?.replace('\'', ''):
+//                               'none',
+//                       }
+//                   }
+  
+//                   // Append to members array
+//                   members[stateEvent.user_id].push(event);
+//               }
+//           }
+  
+//           if (stateEvent.type === 'm.room.name') {
+//               // Ensure only the latest state event is processed and saved/printed
+//               if (stateEvent.origin_server_ts > latest.name) {
+//                   latest.name = stateEvent.origin_server_ts;
+//                   details.name = stateEvent.content.name;
+//               }
+//           }
+  
+//           if (stateEvent.type === 'm.room.power_levels') {
+//               // Ensure only the latest state event is processed and saved/printed
+//               if (stateEvent.origin_server_ts > latest.power_levels) {
+//                   latest.power_levels = stateEvent.origin_server_ts;
+//                   const pl = stateEvent.content
+  
+//                   details.users_default = parseInt(pl.users_default);
+  
+//                   privileged_users = [];
+//                   Object.keys(pl.users).forEach(user => {
+//                       const user_pl = parseInt(pl.users[user]);
+//                       // Users with higher than default power level
+//                       if (user_pl > details.users_default) {
+//                           privileged_users.push({ 'user': `${user}: ${user_pl}` })
+//                       }
+  
+//                       // Users with lower than default power level
+//                       else if (user_pl < pl.users_default) {
+//                           restricted_users.push({ 'user': `${user}: ${user_pl}` })
+//                       }
+  
+//                       // This also ensures users with explicitly listed with the default PL are ignored
+//                   });
+  
+//                   pl_events = [];
+//                   Object.keys(pl.events).forEach(event => {
+//                       pl_events.push({ 'event': `${event}: ${pl.events[event]}` })
+//                   });
+  
+//                   if (typeof pl.notifications === 'object') {
+//                       pl.notifications = JSON.stringify(pl.notifications);
+//                   }
+  
+//                   // Removed keys already processed, and save the rest to an array for printing
+//                   delete pl['events'];
+//                   delete pl['users'];
+//                   delete pl['users_default'];
+//                   power_levels = [];
+//                   Object.keys(pl).forEach(key => {
+//                       power_levels.push({ 'pl': `${key}: ${pl[key]}` })
+//                   });
+//               }
+//           }
+  
+//           if (stateEvent.type === 'm.room.tombstone') {
+//               tombstones.push({
+//                   'tombstone_body': stateEvent.content.body,
+//                   'replacement_room': stateEvent.content.replacement_room,
+//                   'tombstone_time': new Date(stateEvent.origin_server_ts),
+//                   'tombstone_sender': stateEvent.sender,
+//               });
+//           }
+  
+//           if (stateEvent.type === 'm.room.topic') {
+//               if (stateEvent.origin_server_ts > latest.topic) {
+//                   latest.topic = stateEvent.origin_server_ts;
+//                   details.topic = stateEvent.content.topic;
+//               }
+//           }
+  
+//           if (stateEvent.type === 'm.room.server_acl') {
+//               server_acls = stateEvent.content.deny;
+//           }
+//       });
+  
+//       // Convert the aliases Set to an array that Handlebars understands
+//       alias_array = [...aliases];
+  
+//       // Call the visualizer template with all collected data
+//     //   const handlebarAssets = {
+//     //       'javascriptURL': `${pm.globals.get('assetsURL')}script.js`,
+//     //       'styleURL': `${pm.globals.get('assetsURL')}style.css`,
+//     //   }
+//       pm.visualizer.set(template, {
+//         //   handlebarAssets,
+//           alias_array,
+//           allow_rooms,
+//           details,
+//           members,
+//           pl_events,
+//           power_levels,
+//           predecessors,
+//           privileged_users,
+//           restricted_users,
+//           server_acls,
+//           tombstones,
+//       });
+//   }
+}

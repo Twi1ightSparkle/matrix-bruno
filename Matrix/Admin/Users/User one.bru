@@ -1,0 +1,151 @@
+meta {
+  name: User one
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/users/{{userId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+tests {
+  test("should be able to login", function() {
+    expect(1).to.equal(1);
+  });
+  
+  //   const template = `
+  //   <link rel="stylesheet" type="text/css" href="{{handlebarAssets.styleURL}}" />
+  //   <script src="{{handlebarAssets.javascriptURL}}"></script>
+  
+  //   <table>
+  //       <tr>
+  //           <td>Name</td>
+  //           <td><span onclick="copy('{{user.name}}')">{{user.name}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Is guest</td>
+  //           <td><span onclick="copy('{{user.is_guest}}')">{{user.is_guest}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Admin</td>
+  //           <td><span onclick="copy('{{user.admin}}')">{{user.admin}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Consent version</td>
+  //           <td><span onclick="copy('{{user.consent_version}}')">{{user.consent_version}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Consent Server Notice Sent</td>
+  //           <td><span onclick="copy('{{user.consent_server_notice_sent}}')">{{user.consent_server_notice_sent}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Appservice ID</td>
+  //           <td><span onclick="copy('{{user.appservice_id}}')">{{user.appservice_id}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Creation time</td>
+  //           <td><span onclick="copy('{{user.creation_ts}}')">{{user.creation_ts}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>User type</td>
+  //           <td><span onclick="copy('{{user.user_type}}')">{{user.user_type}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Deactivated</td>
+  //           <td><span onclick="copy('{{user.deactivated}}')">{{user.deactivated}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Shadow banned</td>
+  //           <td><span onclick="copy('{{user.shadow_banned}}')">{{user.shadow_banned}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Displayname</td>
+  //           <td><span onclick="copy('{{user.displayname}}')">{{user.displayname}}</span></td>
+  //       </tr>
+  //       <tr>
+  //           <td>Avatar</td>
+  //           <td>
+  //               {{#if user.avatar_url}}
+  //                   <img src="{{user.avatar_url}}" onclick="copy('{{user.avatar_url}}')" style="max-height: 200px; max-width: 200px;" class="pointer">
+  //               {{else}}
+  //                   none
+  //               {{/if}}       
+  //           </td>
+  //       </tr>
+  
+  //       <tr>
+  //           <td>Threepids</td>
+  //           <td>
+  //               {{#each threepids}}
+  //                   Medium: <span onclick="copy('{{medium}}')">{{medium}}</span><br />
+  //                   Address: <span onclick="copy('{{address}}')">{{address}}</span><br />
+  //                   Validated at: <span onclick="copy('{{validated_at}}')">{{validated_at}}</span><br />
+  //                   Added at: <span onclick="copy('{{added_at}}')">{{added_at}}</span><br /><br />
+  //               {{/each}}
+  //           </td>
+  //       </tr>
+  
+      
+  //       <tr>
+  //           <td>External IDs</td>
+  //           <td>
+  //               {{#each external_ids}}
+  //                   Auth provider: <span onclick="copy('{{auth_provider}}')">{{auth_provider}}</span><br />
+  //                   External ID: <span onclick="copy('{{external_id}}')">{{external_id}}</span><br />
+  //               {{/each}}
+  //           </td>
+  //       </tr>
+  //   </table>
+  //   `;
+  
+  //   const threepids = [];
+  //   const external_ids = [];
+  
+  //   if (res.status === 200) {
+  //       const user = response.body;
+  
+  //       user.is_guest = (user.is_guest === 0) ? 'No' : 'Yes';
+  //       user.admin = (user.admin === 0) ? 'No' : 'Yes';
+  //       user.consent_version = (user.consent_version) || 'none';
+  //       user.consent_server_notice_sent = (user.consent_server_notice_sent) || 'none';
+  //       user.appservice_id = (user.appservice_id) || 'none';
+  //       user.creation_ts = new Date(user.creation_ts * 1000);
+  //       user.user_type = (user.user_type) || 'not set';
+  //       user.deactivated = (user.deactivated === 0) ? 'No' : 'Yes';
+  //       user.shadow_banned = (user.shadow_banned) ? 'Yes' : 'No';
+  //       user.avatar_url = (user.avatar_url) ? user.avatar_url.replace('mxc://', `https://${bru.getEnvVar("delegatedURL")}/_matrix/media/r0/download/`) : null;
+  
+  //       user.threepids.forEach(pid => {
+  //           threepids.push({
+  //               'medium': pid.medium,
+  //               'address': pid.address,
+  //               'validated_at': new Date(pid.validated_at),
+  //               'added_at': new Date(pid.added_at),
+  //           });
+  //       });
+  
+  //       user.external_ids.forEach(id => {
+  //           external_ids.push({
+  //               'auth_provider': id.auth_provider,
+  //               'external_id': id.external_id,
+  //           });
+  //       });
+  
+  //       const handlebarAssets = {
+  //           'javascriptURL': `${pm.globals.get('assetsURL')}script.js`,
+  //           'styleURL': `${pm.globals.get('assetsURL')}style.css`,
+  //       };
+  //       pm.visualizer.set(template, {
+  //           handlebarAssets,
+  //           user,
+  //           threepids,
+  //           external_ids,
+  //       });
+  //   }
+}

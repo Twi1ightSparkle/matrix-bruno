@@ -1,0 +1,21 @@
+meta {
+  name: Enable room encryption
+  type: http
+  seq: 7
+}
+
+put {
+  url: hxxps://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/state/m.room.encryption/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "algorithm": "m.megolm.v1.aes-sha2"
+  }
+}

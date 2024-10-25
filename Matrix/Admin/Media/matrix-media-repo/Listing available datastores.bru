@@ -1,0 +1,15 @@
+meta {
+  name: Listing available datastores
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/datastores
+  body: none
+  auth: none
+}
+
+query {
+  access_token: {{mmrAdminSecret}}
+}

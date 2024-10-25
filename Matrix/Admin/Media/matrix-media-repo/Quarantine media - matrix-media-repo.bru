@@ -1,0 +1,15 @@
+meta {
+  name: Quarantine media - matrix-media-repo
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/quarantine/{{url}}/{{mediaId}}
+  body: none
+  auth: none
+}
+
+query {
+  access_token: {{mmrAdminSecret}}
+}

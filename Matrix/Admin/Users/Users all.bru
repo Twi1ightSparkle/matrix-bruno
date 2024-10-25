@@ -1,0 +1,81 @@
+meta {
+  name: Users all
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/users?order_by=creation_ts&dir=b&guests=false&deactivated=true
+  body: none
+  auth: bearer
+}
+
+query {
+  order_by: creation_ts
+  dir: b
+  guests: false
+  deactivated: true
+  ~user_id: localpart
+  ~from: 100
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+tests {
+  // const template = `
+  //     <link rel="stylesheet" type="text/css" href="{{handlebarAssets.styleURL}}" />
+  //     <script src="{{handlebarAssets.javascriptURL}}"></script>
+  // 
+  //     <table bgcolor="#FFFFFF">
+  //         <tr>
+  //             <th>Name</th>
+  //             <th>Guest User</th>
+  //             <th>Synapse Admin</th>
+  //             <th>Deactivated</th>
+  //             <th>Creation time</th>
+  //             <th>Shadow banned</th>
+  //             <th>Display name</th>
+  //         </tr>
+  // 
+  //         {{#each users}}
+  //             <tr>
+  //                 <td>{{name}}</td>
+  //                 <td>{{is_guest}}</td>
+  //                 <td>{{admin}}</td>
+  //                 <td>{{deactivated}}</td>
+  //                 <td>{{creation_time}}</td>
+  //                 <td>{{shadow_banned}}</td>
+  //                 <td>{{displayname}}</td>
+  //             </tr>
+  //         {{/each}}
+  //     </table>
+  // `;
+  // 
+  // 
+  // const users = response.body.users;
+  // 
+  // users.forEach(user => {
+  //     const creation_ts = user.creation_ts;
+  //     const creation_time = new Date(creation_ts);
+  //     user.admin = user.admin ? 'Yes' : 'No';
+  //     user.creation_time = creation_time;
+  //     user.deactivated = user.deactivated ? 'Yes' : 'No';
+  //     user.is_guest = user.is_guest ? 'Yes' : 'No';
+  //     user.shadow_banned = user.shadow_banned ? 'Yes' : 'No';
+  // })
+  // 
+  // // Call the visualizer template with all collected data
+  // const handlebarAssets = {
+  //     'javascriptURL': `${pm.globals.get('assetsURL')}script.js`,
+  //     'styleURL': `${pm.globals.get('assetsURL')}style.css`,
+  // }
+  // 
+  // pm.visualizer.set(template, {
+  //     // Pass the response body parsed as JSON as `data`
+  //     handlebarAssets,
+  //     users,
+  // });
+  // 
+}

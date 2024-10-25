@@ -1,0 +1,19 @@
+meta {
+  name: Get rooms in common (mutual) with another user
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/unstable/uk.half-shot.msc2666/user/mutual_rooms?user_id=@someone:example.com
+  body: none
+  auth: bearer
+}
+
+params:query {
+  user_id: @someone:example.com
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

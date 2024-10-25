@@ -1,0 +1,16 @@
+meta {
+  name: List media for one user
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/usage/{{url}}/users
+  body: none
+  auth: none
+}
+
+query {
+  access_token: {{mmrAdminSecret}}
+  user_id: {{userId}}
+}

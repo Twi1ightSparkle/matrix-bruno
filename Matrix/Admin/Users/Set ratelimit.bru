@@ -1,0 +1,22 @@
+meta {
+  name: Set ratelimit
+  type: http
+  seq: 13
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/@localuser:{{url}}/override_ratelimit
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "messages_per_second": 0,
+    "burst_count": 0
+  }
+}

@@ -1,0 +1,16 @@
+meta {
+  name: Purge media uploaded by a server
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/purge/server/{{url}}?before_ts=1234567890000&access_token={{mmrAdminSecret}}
+  body: none
+  auth: none
+}
+
+query {
+  before_ts: 1234567890000
+  access_token: {{mmrAdminSecret}}
+}

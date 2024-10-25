@@ -1,0 +1,19 @@
+meta {
+  name: Set room state
+  type: http
+  seq: 22
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/state
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {}
+}

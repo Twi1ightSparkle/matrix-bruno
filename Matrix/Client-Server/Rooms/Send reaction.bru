@@ -1,0 +1,25 @@
+meta {
+  name: Send reaction
+  type: http
+  seq: 21
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/send/m.reaction/{{$timestamp}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "m.relates_to": {
+      "rel_type": "m.annotation",
+      "event_id": "{{eventId}}",
+      "key": "🦄"
+    }
+  }
+}

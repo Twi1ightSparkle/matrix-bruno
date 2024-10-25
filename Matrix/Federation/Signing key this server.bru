@@ -1,0 +1,11 @@
+meta {
+  name: Signing key this server
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/key/v2/server
+  body: none
+  auth: none
+}
