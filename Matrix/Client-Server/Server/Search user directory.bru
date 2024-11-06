@@ -1,0 +1,23 @@
+meta {
+  name: Search user directory
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/user_directory/search
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "limit": 10,
+    "search_term": "foo"
+  }
+  
+}
