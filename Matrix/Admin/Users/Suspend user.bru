@@ -1,0 +1,21 @@
+meta {
+  name: Suspend user
+  type: http
+  seq: 16
+}
+
+put {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/suspend/{{userId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "suspend": true
+  }
+}
