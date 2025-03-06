@@ -1,0 +1,11 @@
+meta {
+  name: Get a user
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/{{masUserId}}
+  body: none
+  auth: inherit
+}

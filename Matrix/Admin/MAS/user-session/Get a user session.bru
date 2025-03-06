@@ -1,0 +1,11 @@
+meta {
+  name: Get a user session
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-sessions/{{masUserId}}
+  body: none
+  auth: inherit
+}

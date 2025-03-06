@@ -1,0 +1,20 @@
+meta {
+  name: List user emails
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~page[before]: 
+  ~page[after]: 
+  ~page[first]: 
+  ~page[last]: 
+  ~filter[email]: {{3pid}}
+  ~filter[user]: {{masUserId}}
+}

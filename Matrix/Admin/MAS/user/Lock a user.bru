@@ -1,0 +1,11 @@
+meta {
+  name: Lock a user
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/{{masUserId}}/lock
+  body: none
+  auth: inherit
+}

@@ -1,0 +1,11 @@
+meta {
+  name: Unlock a user
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/{{masUserId}}/unlock
+  body: none
+  auth: inherit
+}

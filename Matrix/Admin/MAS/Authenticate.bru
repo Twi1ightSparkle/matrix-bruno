@@ -1,0 +1,25 @@
+meta {
+  name: Authenticate
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/oauth2/token
+  body: formUrlEncoded
+  auth: basic
+}
+
+auth:basic {
+  username: {{masClientId}}
+  password: {{masClientSecret}}
+}
+
+body:form-urlencoded {
+  grant_type: client_credentials
+  scope: urn:mas:admin
+}
+
+docs {
+  Temporary way to get a MAS Admin token until personal access tokens are implemented. See <https://element-hq.github.io/matrix-authentication-service/topics/admin-api.html#example> for additional details.
+}

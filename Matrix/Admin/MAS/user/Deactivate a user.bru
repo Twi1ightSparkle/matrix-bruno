@@ -1,0 +1,11 @@
+meta {
+  name: Deactivate a user
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/{{masUserId}}/deactivate
+  body: none
+  auth: inherit
+}

@@ -1,0 +1,11 @@
+meta {
+  name: Get a user by localpart
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/by-username/{{localpart}}
+  body: none
+  auth: inherit
+}

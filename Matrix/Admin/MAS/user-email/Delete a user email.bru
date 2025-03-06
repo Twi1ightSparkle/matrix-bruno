@@ -1,0 +1,11 @@
+meta {
+  name: Delete a user email
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails/{{emailId}}
+  body: none
+  auth: inherit
+}
