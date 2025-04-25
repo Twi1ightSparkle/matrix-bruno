@@ -1,0 +1,15 @@
+meta {
+  name: Get policy data by ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/policy-data/:masPolicyId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masPolicyId: {{masPolicyId}}
+}

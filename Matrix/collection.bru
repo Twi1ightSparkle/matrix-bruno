@@ -1,0 +1,6 @@
+script:pre-request {
+  if (!bru.getEnvVar("userId") && bru.getEnvVar("localpart")) {
+    const mxid = `@${bru.getEnvVar("localpart")}:${bru.getEnvVar("url")}`;
+    bru.setEnvVar("userId", mxid);
+  }
+}

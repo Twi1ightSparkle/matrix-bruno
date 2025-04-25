@@ -1,0 +1,21 @@
+meta {
+  name: Set the current policy data
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/policy-data
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "data": {
+      "hello": "world",
+      "foo": 42,
+      "bar": true
+    }
+  }
+}

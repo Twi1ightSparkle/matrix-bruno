@@ -5,23 +5,34 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails?filter[user]={{masUserId}}
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails?filter[email]={{3pid}}
   body: none
   auth: inherit
 }
 
 params:query {
-  filter[user]: {{masUserId}}
+  filter[email]: {{3pid}}
+  ~filter[user]: {{masUserId}}
   ~page[before]: 
   ~page[after]: 
   ~page[first]: 
   ~page[last]: 
-  ~filter[email]: {{3pid}}
+}
+
+script:pre-request {
+  const url = req.getUrl();
+  if (url.includes('?')) {
+    let [link, query] = url.split('?');
+    const queryEncoded = query.replace('+', '%2B');
+    const newUrl = `${link}?${queryEncoded}`;
+    req.setUrl(newUrl);
+  }
 }
 
 script:post-response {
   const body = res.body;
   if (body.data && body.data.length > 0) {
     bru.setEnvVar("masEmailId", body.data[0].id);
+    bru.setEnvVar("masUserId", body.data[0].attributes.user_id);
   }
 }

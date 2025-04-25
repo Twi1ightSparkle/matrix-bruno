@@ -13,3 +13,13 @@ get {
 params:path {
   masUserId: {{masUserId}}
 }
+
+script:post-response {
+  const body = res.body;
+  if (body.data?.id) {
+    const localpart = body.data.attributes.username;
+    const mxid = `@${localpart}:${bru.getEnvVar('url')}`;
+    bru.setEnvVar("localpart", localpart);
+    bru.setEnvVar("userId", mxid);
+  }
+}

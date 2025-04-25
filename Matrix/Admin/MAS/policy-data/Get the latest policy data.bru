@@ -1,0 +1,11 @@
+meta {
+  name: Get the latest policy data
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/policy-data/latest
+  body: none
+  auth: inherit
+}
