@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/@localuser:{{url}}/override_ratelimit
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/override_ratelimit
   body: none
   auth: bearer
+}
+
+params:path {
+  userId: {{userId}}
 }
 
 auth:bearer {

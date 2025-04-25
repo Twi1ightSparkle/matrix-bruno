@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/event_reports/12345
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/event_reports/:reportId
   body: none
   auth: bearer
+}
+
+params:path {
+  reportId: 13245
 }
 
 auth:bearer {

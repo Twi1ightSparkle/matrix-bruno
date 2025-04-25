@@ -5,9 +5,14 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/quarantine/{{url}}/{{mediaId}}
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/quarantine/:url/:mediaId
   body: none
   auth: none
+}
+
+params:path {
+  url: {{url}}
+  mediaId: {{mediaId}}
 }
 
 query {

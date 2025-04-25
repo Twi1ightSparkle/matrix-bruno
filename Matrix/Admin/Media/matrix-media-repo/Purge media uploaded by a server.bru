@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/purge/server/{{url}}?before_ts=1234567890000&access_token={{mmrAdminSecret}}
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/purge/server/:url?before_ts=1234567890000&access_token={{mmrAdminSecret}}
   body: none
   auth: none
+}
+
+params:path {
+  url: {{url}}
 }
 
 query {

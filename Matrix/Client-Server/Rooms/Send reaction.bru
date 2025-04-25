@@ -5,9 +5,14 @@ meta {
 }
 
 put {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/send/m.reaction/{{$timestamp}}
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/send/m.reaction/:transactionId
   body: json
   auth: bearer
+}
+
+params:path {
+  roomId: {{roomId}}
+  transactionId: {{$timestamp}}
 }
 
 auth:bearer {

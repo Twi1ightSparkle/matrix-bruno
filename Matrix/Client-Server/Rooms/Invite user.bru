@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/{{roomId}}/invite
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/invite
   body: json
   auth: bearer
+}
+
+params:path {
+  roomId: {{roomId}}
 }
 
 auth:bearer {

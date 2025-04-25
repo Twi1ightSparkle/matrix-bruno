@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/user/{{userId}}/openid/request_token
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/user/:userId/openid/request_token
   body: json
   auth: bearer
+}
+
+params:path {
+  roomId: {{roomId}}
 }
 
 auth:bearer {

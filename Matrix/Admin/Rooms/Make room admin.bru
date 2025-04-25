@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/{{roomId}}/make_room_admin
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/:roomId/make_room_admin
   body: json
   auth: bearer
+}
+
+params:path {
+  roomId: {{roomId}}
 }
 
 auth:bearer {

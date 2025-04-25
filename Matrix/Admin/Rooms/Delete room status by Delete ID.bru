@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/rooms/delete_status/{{deleteId}}
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/rooms/delete_status/:deleteId
   body: none
   auth: bearer
+}
+
+params:path {
+  deleteId: {{deleteId}}
 }
 
 auth:bearer {
