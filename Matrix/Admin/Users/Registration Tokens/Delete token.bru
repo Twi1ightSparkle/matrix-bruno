@@ -7,13 +7,9 @@ meta {
 delete {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/registration_tokens/:token
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   token: secr3t
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }

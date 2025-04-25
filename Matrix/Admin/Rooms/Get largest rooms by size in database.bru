@@ -7,9 +7,5 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/statistics/database/rooms
   body: none
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{adminToken}}
+  auth: inherit
 }

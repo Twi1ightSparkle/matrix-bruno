@@ -7,9 +7,5 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/groups/{{community}}/summary
   body: none
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{userToken}}
+  auth: inherit
 }

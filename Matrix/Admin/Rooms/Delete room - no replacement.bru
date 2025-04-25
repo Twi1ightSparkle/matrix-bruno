@@ -7,15 +7,11 @@ meta {
 delete {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/rooms/:roomId
   body: json
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   roomId: {{roomId}}
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }
 
 body:json {

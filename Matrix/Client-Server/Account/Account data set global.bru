@@ -7,15 +7,11 @@ meta {
 put {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/user/:userId/account_data/type
   body: json
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   userId: {{userId}}
-}
-
-auth:bearer {
-  token: {{userToken}}
 }
 
 body:json {

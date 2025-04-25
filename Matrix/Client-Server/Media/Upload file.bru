@@ -7,11 +7,7 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_matrix/media/r0/upload
   body: multipartForm
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{userToken}}
+  auth: inherit
 }
 
 body:multipart-form {

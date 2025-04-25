@@ -7,13 +7,9 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/user/:userId/account_data/type
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   userId: {{userId}}
-}
-
-auth:bearer {
-  token: {{userToken}}
 }

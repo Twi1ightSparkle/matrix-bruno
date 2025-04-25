@@ -7,13 +7,9 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/protect/:mediaId
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   mediaId: {{mediaId}}
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }

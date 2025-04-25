@@ -7,9 +7,5 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/federation/destinations
   body: none
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{adminToken}}
+  auth: inherit
 }
