@@ -7,13 +7,9 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/state/m.room.canonical_alias
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   roomId: {{roomId}}
-}
-
-auth:bearer {
-  token: {{userToken}}
 }

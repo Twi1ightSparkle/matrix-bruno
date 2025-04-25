@@ -7,11 +7,7 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/account/whoami
   body: none
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{userToken}}
+  auth: inherit
 }
 
 vars:post-response {

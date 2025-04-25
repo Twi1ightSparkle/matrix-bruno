@@ -7,15 +7,11 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/login
   body: json
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   userId: {{userId}}
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }
 
 body:json {

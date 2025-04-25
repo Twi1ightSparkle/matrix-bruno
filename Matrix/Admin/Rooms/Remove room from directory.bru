@@ -7,15 +7,11 @@ meta {
 put {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/directory/list/room/:roomId
   body: json
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   roomId: {{roomId}}
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }
 
 body:json {

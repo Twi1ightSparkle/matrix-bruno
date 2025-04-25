@@ -7,14 +7,10 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/quarantine/:url/:mediaId
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   url: {{url}}
   mediaId: {{mediaId}}
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }

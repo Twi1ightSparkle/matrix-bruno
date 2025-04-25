@@ -7,7 +7,7 @@ meta {
 delete {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/media?limit=2500
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
@@ -16,8 +16,4 @@ params:path {
 
 query {
   limit: 2500
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }

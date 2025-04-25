@@ -7,13 +7,9 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/username_availabile?username=$localPart
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 query {
   username: $localPart
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }

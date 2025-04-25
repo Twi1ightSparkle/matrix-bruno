@@ -7,11 +7,7 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/logout
   body: none
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{adminToken}}
+  auth: inherit
 }
 
 vars:post-response {

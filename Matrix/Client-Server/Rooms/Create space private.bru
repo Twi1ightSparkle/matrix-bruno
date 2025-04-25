@@ -7,11 +7,7 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/createRoom
   body: json
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{userToken}}
+  auth: inherit
 }
 
 body:json {

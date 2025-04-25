@@ -7,13 +7,9 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/accountdata
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   userId: {{userId}}
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }

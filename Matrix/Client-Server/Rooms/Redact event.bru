@@ -7,17 +7,13 @@ meta {
 put {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/redact/:eventId/:transactionId
   body: json
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   roomId: {{roomId}}
   eventId: {{eventId}}
   transactionId: {{$timestamp}}
-}
-
-auth:bearer {
-  token: {{userToken}}
 }
 
 body:json {
