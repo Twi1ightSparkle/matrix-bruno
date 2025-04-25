@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/by-username/{{localpart}}
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/by-username/:localpart
   body: none
   auth: inherit
+}
+
+params:path {
+  localpart: {{localpart}}
 }
 
 script:pre-request {

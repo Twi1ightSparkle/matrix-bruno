@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-sessions/{{masUserSessionId}}
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-sessions/:masUserSessionId
   body: none
   auth: inherit
+}
+
+params:path {
+  masUserSessionId: {{masUserSessionId}}
 }

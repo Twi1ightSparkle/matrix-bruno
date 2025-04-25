@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/{{masUserId}}/set-admin
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/:masUserId/set-admin
   body: json
   auth: inherit
+}
+
+params:path {
+  masUserId: {{masUserId}}
 }
 
 body:json {

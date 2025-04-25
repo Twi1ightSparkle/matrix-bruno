@@ -5,7 +5,11 @@ meta {
 }
 
 delete {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails/{{emailId}}
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails/:emailId
   body: none
   auth: inherit
+}
+
+params:path {
+  emailId: {{emailId}}
 }

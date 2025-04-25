@@ -5,7 +5,11 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/{{masUserId}}/lock
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/:masUserId/lock
   body: none
   auth: inherit
+}
+
+params:path {
+  masUserId: {{masUserId}}
 }

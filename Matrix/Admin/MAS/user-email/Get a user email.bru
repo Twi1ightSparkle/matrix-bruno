@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails/{{masEmailId}}
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails/:masEmailId
   body: none
   auth: inherit
+}
+
+params:path {
+  masEmailId: {{masEmailId}}
 }
 
 script:post-response {

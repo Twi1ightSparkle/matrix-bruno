@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/compat-sessions/{{masCompatSessionId}}
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/compat-sessions/:masCompatSessionId
   body: none
   auth: inherit
+}
+
+params:path {
+  masCompatSessionId: {{masCompatSessionId}}
 }

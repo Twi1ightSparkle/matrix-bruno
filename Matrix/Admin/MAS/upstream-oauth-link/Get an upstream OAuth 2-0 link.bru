@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-links/{{masOauthLinkId}}
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-links/:masOauthLinkId
   body: none
   auth: inherit
+}
+
+params:path {
+  masOauthLinkId: {{masOauthLinkId}}
 }
