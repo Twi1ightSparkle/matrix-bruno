@@ -7,11 +7,7 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/background_updates/start_job
   body: json
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{adminToken}}
+  auth: inherit
 }
 
 body:json {

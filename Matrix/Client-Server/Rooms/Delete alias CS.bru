@@ -7,13 +7,9 @@ meta {
 delete {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/directory/room/:roomAlias
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   roomAlias: %23alias:{{url}}
-}
-
-auth:bearer {
-  token: {{userToken}}
 }

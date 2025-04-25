@@ -7,15 +7,11 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/invite
   body: json
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   roomId: {{roomId}}
-}
-
-auth:bearer {
-  token: {{userToken}}
 }
 
 body:json {

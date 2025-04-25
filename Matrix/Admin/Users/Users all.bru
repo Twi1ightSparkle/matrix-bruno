@@ -7,7 +7,7 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/users?order_by=creation_ts&dir=b&guests=false&deactivated=true
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 query {
@@ -17,10 +17,6 @@ query {
   deactivated: true
   ~user_id: localpart
   ~from: 100
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }
 
 tests {

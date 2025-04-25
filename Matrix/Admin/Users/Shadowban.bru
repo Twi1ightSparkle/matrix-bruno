@@ -7,13 +7,9 @@ meta {
 post {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/shadow_ban
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   userId: {{userId}}
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }

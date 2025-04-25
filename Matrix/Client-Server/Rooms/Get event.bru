@@ -7,14 +7,10 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/rooms/:roomId/event/:eventId
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   roomId: {{roomId}}
   eventId: {{eventId}}
-}
-
-auth:bearer {
-  token: {{userToken}}
 }

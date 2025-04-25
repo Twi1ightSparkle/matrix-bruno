@@ -7,13 +7,9 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/rooms/:roomId/delete_status
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   roomId: {{roomId}}
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }

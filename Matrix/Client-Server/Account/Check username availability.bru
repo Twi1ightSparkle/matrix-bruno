@@ -7,13 +7,9 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/register/available?username=localpart
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 query {
   username: localpart
-}
-
-auth:bearer {
-  token: {{userToken}}
 }

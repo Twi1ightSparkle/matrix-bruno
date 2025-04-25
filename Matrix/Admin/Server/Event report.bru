@@ -7,15 +7,11 @@ meta {
 get {
   url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/event_reports/:reportId
   body: none
-  auth: bearer
+  auth: inherit
 }
 
 params:path {
   reportId: 13245
-}
-
-auth:bearer {
-  token: {{adminToken}}
 }
 
 vars:post-response {
