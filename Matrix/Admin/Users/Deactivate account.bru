@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/deactivate/{{userId}}
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/deactivate/:userId
   body: json
   auth: bearer
+}
+
+params:path {
+  userId: {{userId}}
 }
 
 auth:bearer {

@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/directory/room/%23matrix:{{url}}
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/directory/room/:roomAlias
   body: none
   auth: none
+}
+
+params:path {
+  roomAlias: %23alias:{{url}}
 }
 
 vars:post-response {

@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/{{userId}}/admin
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/admin
   body: none
   auth: bearer
+}
+
+params:path {
+  userId: {{userId}}
 }
 
 auth:bearer {

@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/user/{{userId}}/account_data/type
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/user/:userId/account_data/type
   body: none
   auth: bearer
+}
+
+params:path {
+  userId: {{userId}}
 }
 
 auth:bearer {

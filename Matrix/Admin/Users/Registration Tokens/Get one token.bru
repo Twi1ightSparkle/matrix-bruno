@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/registration_tokens/abcd
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/registration_tokens/:token
   body: none
   auth: bearer
+}
+
+params:path {
+  token: secr3t
 }
 
 auth:bearer {

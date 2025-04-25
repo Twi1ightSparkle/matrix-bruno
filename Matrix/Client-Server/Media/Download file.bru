@@ -5,7 +5,12 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/r0/download/{{url}}/{{mediaId}}
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/r0/download/:url/:mediaId
   body: none
   auth: none
+}
+
+params:path {
+  url: {{url}}
+  mediaId: {{mediaId}}
 }

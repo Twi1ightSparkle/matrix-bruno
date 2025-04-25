@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/protect/localMediaId
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/protect/:mediaId
   body: none
   auth: bearer
+}
+
+params:path {
+  mediaId: {{mediaId}}
 }
 
 auth:bearer {

@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/threepid/{{3pidType}}/users/{{3pid}}
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/threepid/:3pidType/users/:3pid
   body: none
   auth: bearer
+}
+
+params:path {
+  3pidType: {{3pidType}}
+  3pid: {{3pid}}
 }
 
 auth:bearer {

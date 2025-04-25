@@ -5,9 +5,13 @@ meta {
 }
 
 put {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/registration_tokens/defg
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/registration_tokens/:token
   body: json
   auth: bearer
+}
+
+params:path {
+  token: secr3t
 }
 
 auth:bearer {

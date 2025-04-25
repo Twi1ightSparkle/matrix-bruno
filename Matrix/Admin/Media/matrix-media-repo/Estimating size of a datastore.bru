@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/datastores/{{datastore}}/size_estimate
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/datastores/:datastore/size_estimate
   body: none
   auth: none
+}
+
+params:path {
+  datastore: {{datastore}}
 }
 
 query {

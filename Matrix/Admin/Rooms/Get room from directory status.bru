@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/directory/list/room/{{roomId}}
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/directory/list/room/:roomId
   body: none
   auth: none
+}
+
+params:path {
+  roomId: {{roomId}}
 }
