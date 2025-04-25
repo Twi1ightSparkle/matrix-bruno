@@ -5,17 +5,17 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-sessions
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-sessions?filter[user]={{masUserId}}
   body: none
   auth: inherit
 }
 
 params:query {
+  filter[user]: {{masUserId}}
   ~page[before]: 
   ~page[after]: 
   ~page[first]: 
   ~page[last]: 
-  ~filter[user]: {{masUserId}}
   ~filter[client]: 
   ~filter[client-kind]: 
   ~filter[user-session]: 

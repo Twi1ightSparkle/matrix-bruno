@@ -9,3 +9,22 @@ get {
   body: none
   auth: inherit
 }
+
+script:pre-request {
+  if (!bru.getEnvVar("localpart")) {
+    const mxid = bru.getEnvVar("userId");
+    if (!mxid) {
+      return;
+    }
+    
+    let localpart = mxid.replace("@", "").split(":")[0];
+    bru.setEnvVar("localpart", localpart);
+  }
+}
+
+script:post-response {
+  const body = res.body;
+  if (body.data.id) {
+    bru.setEnvVar("masUserId", body.data.id);
+  }
+}

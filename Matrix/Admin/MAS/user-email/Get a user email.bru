@@ -5,7 +5,14 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails/{{masUserId}}
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails/{{masEmailId}}
   body: none
   auth: inherit
+}
+
+script:post-response {
+  const body = res.body;
+  if (body.data?.attributes?.user_id) {
+    bru.setEnvVar("masUserId", body.data.attributes.user_id);
+  }
 }

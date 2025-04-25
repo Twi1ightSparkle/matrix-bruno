@@ -5,17 +5,24 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-links
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-links?filter[user]={{masUserId}}
   body: none
   auth: inherit
 }
 
 params:query {
+  filter[user]: {{masUserId}}
   ~page[before]: 
   ~page[after]: 
   ~page[first]: 
   ~page[last]: 
-  ~filter[user]: {{masUserId}}
   ~filter[provider]: 
   ~filter[subject]: 
+}
+
+script:post-response {
+  const body = res.body;
+  if (body.data && body.data.length > 0) {
+    bru.setEnvVar("masOauthLinkId", body.data[0].id);
+  }
 }
