@@ -5,9 +5,13 @@ meta {
 }
 
 delete {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/{{userId}}/media?limit=2500
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/media?limit=2500
   body: none
   auth: bearer
+}
+
+params:path {
+  userId: {{userId}}
 }
 
 query {

@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/client/unstable/uk.half-shot.msc2666/user/shared_rooms/{{userId}}
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/unstable/uk.half-shot.msc2666/user/shared_rooms/:userId
   body: none
   auth: bearer
+}
+
+params:path {
+  userId: {{userId}}
 }
 
 auth:bearer {

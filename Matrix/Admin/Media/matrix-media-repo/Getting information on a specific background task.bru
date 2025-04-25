@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/tasks/{{task_id}}
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/tasks/:taskId
   body: none
   auth: none
+}
+
+params:path {
+  taskId: {{taskId}}
 }
 
 query {

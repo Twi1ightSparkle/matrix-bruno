@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/{{roomId}}/context/{{eventId}}
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/:roomId/context/:eventId
   body: none
   auth: bearer
+}
+
+params:path {
+  roomId: {{roomId}}
+  eventId: {{eventId}}
 }
 
 auth:bearer {

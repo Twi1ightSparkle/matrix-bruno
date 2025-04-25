@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/{{roomId}}
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/:roomId
   body: none
   auth: bearer
+}
+
+params:path {
+  roomId: {{roomId}}
 }
 
 auth:bearer {

@@ -5,9 +5,13 @@ meta {
 }
 
 put {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/profile/{{userId}}/avatar_url
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/r0/profile/:userId/avatar_url
   body: json
   auth: bearer
+}
+
+params:path {
+  userId: {{userId}}
 }
 
 auth:bearer {

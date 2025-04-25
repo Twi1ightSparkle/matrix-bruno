@@ -5,9 +5,13 @@ meta {
 }
 
 put {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/{{userId}}/admin
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/admin
   body: json
   auth: bearer
+}
+
+params:path {
+  userId: {{userId}}
 }
 
 auth:bearer {

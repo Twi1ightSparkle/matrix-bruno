@@ -5,9 +5,14 @@ meta {
 }
 
 post {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/quarantine/{{url}}/{{mediaId}}
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/quarantine/:url/:mediaId
   body: none
   auth: bearer
+}
+
+params:path {
+  url: {{url}}
+  mediaId: {{mediaId}}
 }
 
 auth:bearer {
