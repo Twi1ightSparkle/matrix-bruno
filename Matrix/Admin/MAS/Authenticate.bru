@@ -20,6 +20,15 @@ body:form-urlencoded {
   scope: urn:mas:admin
 }
 
+script:post-response {
+  // Store the token in a standalone variable so it's not
+  // removed when the env file is edited
+  const body = res.body;
+  if (body.access_token) {
+    bru.setVar("masAdminTokenRuntime", body.access_token);
+  }
+}
+
 docs {
   Temporary way to get a MAS Admin token until personal access tokens are implemented. See <https://element-hq.github.io/matrix-authentication-service/topics/admin-api.html#example> for additional details.
 }
