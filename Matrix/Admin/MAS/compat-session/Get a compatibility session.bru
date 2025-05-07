@@ -1,0 +1,15 @@
+meta {
+  name: Get a compatibility session
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/compat-sessions/:masCompatSessionId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masCompatSessionId: {{masCompatSessionId}}
+}

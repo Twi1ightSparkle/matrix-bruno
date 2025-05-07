@@ -1,0 +1,25 @@
+meta {
+  name: Get a user
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/:masUserId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masUserId: {{masUserId}}
+}
+
+script:post-response {
+  const body = res.body;
+  if (body.data?.id) {
+    const localpart = body.data.attributes.username;
+    const mxid = `@${localpart}:${bru.getEnvVar('url')}`;
+    bru.setEnvVar("localpart", localpart);
+    bru.setEnvVar("userId", mxid);
+  }
+}

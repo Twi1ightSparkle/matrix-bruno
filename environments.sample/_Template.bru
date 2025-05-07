@@ -2,7 +2,17 @@ vars {
   protocol: https
   url: example.com
   delegatedURL: matrix.example.com
+  masAdminEndpoint: matrix.example.com/mas
   userId: 
+  localpart: 
+  masUserId: 
+  masEmailId: 
+  masCompatSessionId: 
+  masOauthLinkId: 
+  masOauthProviderId: 
+  masOauthSessionId: 
+  masPolicyId: 
+  masUserSessionId: 
   roomId: 
   3pid: 
   3pidType: email
@@ -15,6 +25,9 @@ vars {
   openidToken: 
   task_id: 
   adminToken: {{process.env.example-com-adminToken}}
+  masAdminToken: {{process.env.example-com-masAdminToken}}
+  masClientId: {{process.env.example-com-masClientId}}
+  masClientSecret: {{process.env.example-com-masClientSecret}}
   mmrAdminSecret: {{process.env.example-com-mmrAdminSecret}}
   userToken: {{process.env.example-com-userToken}}
 }

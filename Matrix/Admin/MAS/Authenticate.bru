@@ -1,0 +1,34 @@
+meta {
+  name: Authenticate
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/oauth2/token
+  body: formUrlEncoded
+  auth: basic
+}
+
+auth:basic {
+  username: {{masClientId}}
+  password: {{masClientSecret}}
+}
+
+body:form-urlencoded {
+  grant_type: client_credentials
+  scope: urn:mas:admin
+}
+
+script:post-response {
+  // Store the token in a standalone variable so it's not
+  // removed when the env file is edited
+  const body = res.body;
+  if (body.access_token) {
+    bru.setVar("masAdminTokenRuntime", body.access_token);
+  }
+}
+
+docs {
+  Temporary way to get a MAS Admin token until personal access tokens are implemented. See <https://element-hq.github.io/matrix-authentication-service/topics/admin-api.html#example> for additional details.
+}

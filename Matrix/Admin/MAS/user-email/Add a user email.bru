@@ -1,0 +1,18 @@
+meta {
+  name: Add a user email
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-emails
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "user_id": "{{masUserId}}",
+    "email": ""
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Get an upstream OAuth 2-0 link
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-links/:masOauthLinkId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masOauthLinkId: {{masOauthLinkId}}
+}

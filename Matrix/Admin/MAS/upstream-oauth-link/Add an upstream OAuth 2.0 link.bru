@@ -1,0 +1,20 @@
+meta {
+  name: Add an upstream OAuth 2.0 link
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-links
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "user_id": "{{masUserId}}",
+    "provider_id": "{{masOauthProviderId}}",
+    "subject": "string",
+    "human_account_name": "string"
+  }
+}

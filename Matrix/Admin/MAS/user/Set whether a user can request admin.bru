@@ -1,0 +1,21 @@
+meta {
+  name: Set whether a user can request admin
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/:masUserId/set-admin
+  body: json
+  auth: inherit
+}
+
+params:path {
+  masUserId: {{masUserId}}
+}
+
+body:json {
+  {
+    "admin": true
+  }
+}

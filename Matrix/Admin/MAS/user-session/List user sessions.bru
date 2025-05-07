@@ -1,0 +1,20 @@
+meta {
+  name: List user sessions
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-sessions?filter[user]={{masUserId}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  filter[user]: {{masUserId}}
+  ~page[before]: 
+  ~page[after]: 
+  ~page[first]: 
+  ~page[last]: 
+  ~filter[status]: 
+}

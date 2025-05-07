@@ -1,0 +1,15 @@
+meta {
+  name: Get an OAuth 2-0 session
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-sessions/:oauthSessionId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  oauthSessionId: {{oauthSessionId}}
+}

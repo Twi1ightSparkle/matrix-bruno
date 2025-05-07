@@ -1,0 +1,24 @@
+meta {
+  name: List OAuth 2-0 sessions
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-sessions?filter[user]={{masUserId}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  filter[user]: {{masUserId}}
+  ~page[before]: 
+  ~page[after]: 
+  ~page[first]: 
+  ~page[last]: 
+  ~filter[client]: 
+  ~filter[client-kind]: 
+  ~filter[user-session]: 
+  ~filter[scope]: 
+  ~filter[status]: 
+}
