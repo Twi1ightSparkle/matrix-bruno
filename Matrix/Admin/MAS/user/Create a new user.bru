@@ -16,3 +16,10 @@ body:json {
     "skip_homeserver_check": false
   }
 }
+
+script:post-response {
+  const body = res.body;
+  if (body.data?.id) {
+    bru.setEnvVar("masUserId", body.data.id);
+  }
+}
