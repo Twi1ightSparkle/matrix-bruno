@@ -1,0 +1,11 @@
+meta {
+  name: Show scheduled tasks
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/scheduled_tasks
+  body: none
+  auth: inherit
+}
