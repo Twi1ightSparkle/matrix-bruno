@@ -1,0 +1,20 @@
+meta {
+  name: List user registration tokens
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-registration-tokens
+  body: none
+  auth: none
+}
+
+params:query {
+  ~filter[used]: true
+  ~filter[revoked]: false
+  ~page[before]: 
+  ~page[after]: 
+  ~page[first]: 
+  ~page[last]: 
+}
