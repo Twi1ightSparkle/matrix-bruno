@@ -1,20 +1,22 @@
 meta {
   name: List user registration tokens
   type: http
-  seq: 6
+  seq: 3
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-registration-tokens
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-registration-tokens?filter[valid]=true
   body: none
   auth: none
 }
 
 params:query {
+  filter[valid]: true
+  ~filter[expired]: true
+  ~filter[revoked]: true
   ~filter[used]: true
-  ~filter[revoked]: false
-  ~page[before]: 
   ~page[after]: 
+  ~page[before]: 
   ~page[first]: 
   ~page[last]: 
 }
