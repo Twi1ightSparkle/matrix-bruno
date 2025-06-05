@@ -1,0 +1,26 @@
+meta {
+  name: Create a new user registration token
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-registration-tokens
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "token": "s3cret",
+    "usage_limit": 1,
+    "expires_at": "2025-07-03T11:38:57.675Z"
+  }
+}
+
+script:post-response {
+  const body = res.body;
+  if (body.data?.id) {
+    bru.setEnvVar("masTokenId", body.data.id);
+  }
+}

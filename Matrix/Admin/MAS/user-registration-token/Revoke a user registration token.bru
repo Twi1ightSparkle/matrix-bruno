@@ -1,0 +1,15 @@
+meta {
+  name: Revoke a user registration token
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-registration-tokens/:masTokenId/revoke
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masTokenId: {{masTokenId}}
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Get a user registration token
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-registration-tokens/:masTokenId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masTokenId: {{masTokenId}}
+}
