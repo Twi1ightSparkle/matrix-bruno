@@ -1,0 +1,19 @@
+meta {
+  name: Room summary CS
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v1/room_summary/:roomId
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~note: Also accepts a room alias
+}
+
+params:path {
+  roomId: {{roomId}}
+}
