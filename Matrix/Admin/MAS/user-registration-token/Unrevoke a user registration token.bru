@@ -1,0 +1,15 @@
+meta {
+  name: Unrevoke a user registration token
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-registration-tokens/:masTokenId/unrevoke
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masTokenId: {{masTokenId}}
+}
