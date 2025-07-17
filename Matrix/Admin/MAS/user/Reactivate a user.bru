@@ -1,0 +1,15 @@
+meta {
+  name: Reactivate a user
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/:masUserId/reactivate
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masUserId: {{masUserId}}
+}
