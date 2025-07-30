@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MAS Code</title>
+        <style>
+            html {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>Your MAS Code is: <span id="code"></span></p>
+            <button type="button" onclick="copy()">Copy code</button>
+            <span id="copied"></span>
+        </div>
+    </body>
+    <script>
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+        const code = params.get('code');
+        document.getElementById('code').textContent = code;
+        const copy = () => {
+            navigator.clipboard.writeText(code);
+            document.getElementById('copied').textContent =
+                'Copied! You can now close this window.';
+        };
+    </script>
+</html>
