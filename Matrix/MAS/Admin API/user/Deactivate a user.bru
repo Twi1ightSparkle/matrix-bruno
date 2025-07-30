@@ -6,10 +6,16 @@ meta {
 
 post {
   url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/:masUserId/deactivate
-  body: none
+  body: json
   auth: inherit
 }
 
 params:path {
   masUserId: {{masUserId}}
+}
+
+body:json {
+  {
+    "skip_erase": false
+  }
 }
