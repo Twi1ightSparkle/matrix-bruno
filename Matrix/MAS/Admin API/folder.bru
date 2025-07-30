@@ -10,3 +10,14 @@ auth {
 auth:bearer {
   token: {{masAdminToken}}
 }
+
+script:pre-request {
+  // Use the standalone token variable if a MAS token is not set
+  // in the a environment .env file
+  const masAdminTokenRuntime = bru.getVar("masAdminTokenRuntime");
+  const masAdminToken = bru.getEnvVar("masAdminToken");
+  
+  if (masAdminTokenRuntime && !masAdminToken) {
+    bru.setEnvVar("masAdminToken", masAdminTokenRuntime);
+  }
+}
