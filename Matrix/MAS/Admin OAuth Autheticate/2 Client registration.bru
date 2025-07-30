@@ -1,0 +1,110 @@
+meta {
+  name: 2 Client registration
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{masAuthRegistrationEndpoint}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "application_type": "web",
+    "client_name": "Bruno",
+    "client_uri": "https://twi1ightsparkle.github.io/matrix-bruno/mas-auth-code.html",
+    "token_endpoint_auth_method": "none",
+    "grant_types": [
+      "authorization_code",
+      "refresh_token"
+    ],
+    "redirect_uris": [
+      "https://twi1ightsparkle.github.io/matrix-bruno/mas-auth-code.html"
+    ],
+    "response_types": [
+      "code"
+    ]
+  }
+}
+
+script:post-response {
+  const body = res.body;
+  if (body.client_id) {
+      bru.setVar('masAuthClientId', body.client_id);
+  }
+  
+  // Generate authentication URL
+  const crypto = require('crypto');
+  const { exec } = require('child_process');
+  
+  function base64urlSha256(input) {
+      const hash = crypto.createHash('sha256').update(input).digest();
+      return hash
+          .toString('base64')
+          .replace(/\+/g, '-')
+          .replace(/\//g, '_')
+          .replace(/=+$/, '');
+  }
+  
+  function openUrl(url) {
+      const startCmd = {
+          darwin: 'open',
+          win32: 'start ""',
+          linux: 'xdg-open',
+      }[process.platform];
+  
+      if (!startCmd) {
+          throw new Error('Unsupported platform: ' + process.platform);
+      }
+  
+      exec(`${startCmd} "${url}"`);
+  }
+  
+  const authEndpoint = bru.getVar('masAuthAuthorizationEndpoint');
+  const authClientId = bru.getVar('masAuthClientId');
+  const authState = Date.now();
+  const authCodeVerifier = crypto.randomBytes(24).toString('hex');
+  bru.setVar('masAuthCodeVerifier', authCodeVerifier);
+  const authCodeChallenge = base64urlSha256(authCodeVerifier);
+  bru.setVar('masAuthCodeChallenge', authCodeChallenge);
+  
+  const authUrl =
+      authEndpoint +
+      `?response_type=code` +
+      `&response_mode=fragment` +
+      `&client_id=${authClientId}` +
+      `&redirect_uri=${encodeURIComponent(
+          'https://twi1ightsparkle.github.io/matrix-bruno/mas-auth-code.html',
+      )}` +
+      `&scope=${encodeURIComponent(
+          'urn:matrix:org.matrix.msc2967.client:api:* urn:mas:admin urn:synapse:admin:*',
+      )}` +
+      `&state=${authState}` +
+      `&code_challenge_method=S256` +
+      `&code_challenge=${authCodeChallenge}`;
+  
+  openUrl(authUrl);
+  
+  res.body['matrix-bruno note'] =
+      'All response body keys below and including this one were injected by the matrix-bruno request script and did not come from MAS';
+  res.body['matrix-bruno note - authCodeChallenge'] = authCodeChallenge;
+  res.body['matrix-bruno note - authCodeVerifier'] = authCodeVerifier;
+  res.body['matrix-bruno note - authState'] = authState;
+  res.body['matrix-bruno note - authClientId'] = authClientId;
+  res.body['matrix-bruno note - Authentication URL'] = authUrl;
+  res.body['matrix-bruno note - Authentication instructions 1'] =
+      'The above URL should have opened automatically in your browser, go to your browser to authenticate';
+  res.body['matrix-bruno note - Authentication instructions 2'] =
+      'If the authentication page did not open, copy the above URL into your browser';
+  res.body['matrix-bruno note - Authentication instructions 3'] =
+      'Log in to MAS using a user with admin permissions';
+  res.body['matrix-bruno note - Authentication instructions 4'] =
+      'After authorizing the Bruno client, you will be redirected to https://twi1ightsparkle.github.io/matrix-bruno/mas-auth-code.html#state=timestamp&code=random-string';
+  res.body['matrix-bruno note - Authentication instructions 5'] =
+      'Copy your code';
+  res.body['matrix-bruno note - Authentication instructions 6'] =
+      'Proceed to next request and paste the code on the Body tab';
+  
+}

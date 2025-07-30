@@ -1,10 +1,14 @@
 meta {
-  name: MAS
+  name: Admin API
   seq: 2
 }
 
-headers {
-  Authorization: Bearer {{masAdminToken}}
+auth {
+  mode: bearer
+}
+
+auth:bearer {
+  token: {{masAdminToken}}
 }
 
 script:pre-request {

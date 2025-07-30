@@ -1,0 +1,24 @@
+meta {
+  name: 1 Discovery
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/unstable/org.matrix.msc2965/auth_metadata
+  body: formUrlEncoded
+  auth: none
+}
+
+script:post-response {
+  const body = res.body;
+  if (body.registration_endpoint) {
+    bru.setVar("masAuthRegistrationEndpoint", body.registration_endpoint);
+  }
+  if (body.authorization_endpoint) {
+    bru.setVar("masAuthAuthorizationEndpoint", body.authorization_endpoint);
+  }
+  if (body.token_endpoint) {
+    bru.setVar("masAuthTokenEndpoint", body.token_endpoint);
+  }
+}
