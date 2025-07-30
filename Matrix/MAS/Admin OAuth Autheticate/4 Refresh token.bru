@@ -1,0 +1,33 @@
+meta {
+  name: 4 Refresh token
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{masAuthTokenEndpoint}}
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  grant_type: refresh_token
+  client_id: {{masAuthClientId}}
+  refresh_token: {{masAdminRefreshToken}}
+}
+
+script:post-response {
+  // Store the token in a standalone variable so it's not
+  // removed when the env file is edited
+  const body = res.body;
+  if (body.access_token) {
+    bru.setVar("masAdminTokenRuntime", body.access_token);
+  }
+  if (body.access_token) {
+    bru.setVar("masAdminRefreshToken", body.refresh_token);
+  }
+}
+
+settings {
+  encodeUrl: false
+}

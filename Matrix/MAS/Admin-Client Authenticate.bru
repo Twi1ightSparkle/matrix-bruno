@@ -1,5 +1,5 @@
 meta {
-  name: Authenticate
+  name: Admin-Client Authenticate
   type: http
   seq: 1
 }
@@ -30,5 +30,7 @@ script:post-response {
 }
 
 docs {
-  Temporary way to get a MAS Admin token until personal access tokens are implemented. See <https://element-hq.github.io/matrix-authentication-service/topics/admin-api.html#example> for additional details.
+  Authenticate using an Admin Client ID and Secret. <https://element-hq.github.io/matrix-authentication-service/topics/admin-api.html#automated-tools>
+  
+  Set the MAS Client ID and Client Secret in the `.env` file.
 }

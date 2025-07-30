@@ -1,8 +1,12 @@
 meta {
   name: Client-Server
-  seq: 3
+  seq: 4
 }
 
-headers {
-  Authorization: Bearer {{userToken}}
+auth {
+  mode: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
 }
