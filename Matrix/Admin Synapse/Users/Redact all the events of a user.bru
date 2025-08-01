@@ -1,0 +1,30 @@
+meta {
+  name: Redact all the events of a user
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/user/:userId/redact
+  body: json
+  auth: inherit
+}
+
+params:path {
+  userId: 
+}
+
+body:json {
+  {
+    "rooms": [
+      "!roomid1",
+      "!roomid2"
+    ],
+    "reason": "Optional reason the redaction is being requested, ie 'spam', 'abuse', etc. This will be included in each redaction event, and be visible to users.",
+    "limit": 1000
+  }
+}
+
+docs {
+  <https://element-hq.github.io/synapse/latest/admin_api/user_admin_api.html#redact-all-the-events-of-a-user>
+}
