@@ -28,6 +28,10 @@ See `What does the different MAS access token prefixes mean?` in the
 [Element Documentation](https://docs.element.io/latest/element-support/frequently-asked-questions/#element-general)
 for an explanation of the different token prefixes.
 
+If you do not wish to authenticate manually, I have created a simple web-ui to
+authenticate against MAS for a MAS+Synapse Admin access token:
+<https://twi1ightsparkle.github.io/mas-admin-auth/>.
+
 ### Option 1, Non-Interactive Authentication
 
 <https://element-hq.github.io/matrix-authentication-service/topics/admin-api.html#automated-tools>
