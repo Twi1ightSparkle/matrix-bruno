@@ -58,7 +58,7 @@ access token returned from this can only be used with the MAS Admin API. The
 authentication request automatically stores the access token in a Bruno runtime
 variable for use with subsequent requests, meaning the token is deleted when you
 close Bruno. To persist the token, add it to the `masAdminToken` environment
-variable. The token is only valid for a short time as configure in your MAS
+variable. The token is only valid for a short time as configured in your MAS
 config.
 
 To use the Synapse Admin API, you need to create an admin compatibility token
