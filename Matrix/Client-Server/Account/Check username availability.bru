@@ -1,7 +1,7 @@
 meta {
   name: Check username availability
   type: http
-  seq: 3
+  seq: 4
 }
 
 get {
@@ -10,6 +10,6 @@ get {
   auth: inherit
 }
 
-query {
+params:query {
   username: localpart
 }

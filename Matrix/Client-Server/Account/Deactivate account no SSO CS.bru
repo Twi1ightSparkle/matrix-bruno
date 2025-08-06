@@ -1,0 +1,29 @@
+meta {
+  name: Deactivate account no SSO CS
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v3/account/deactivate
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "auth": {
+      "type": "m.login.password",
+      "identifier": {
+        "type": "m.id.user",
+        "user": "{{userId}}"
+      },
+      "password": "password"
+    },
+    "erase": true
+  }
+}
+
+vars:post-response {
+  userToken: 
+}
