@@ -10,11 +10,11 @@ post {
   auth: none
 }
 
-params:path {
-  url: {{url}}
-}
-
-query {
+params:query {
   before_ts: 1234567890000
   access_token: {{mmrAdminSecret}}
+}
+
+params:path {
+  url: {{url}}
 }

@@ -10,11 +10,11 @@ post {
   auth: none
 }
 
-params:path {
-  roomId: {{roomId}}
-}
-
-query {
+params:query {
   before_ts: 1234567890000
   access_token: {{mmrAdminSecret}}
+}
+
+params:path {
+  roomId: {{roomId}}
 }

@@ -5,15 +5,15 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/datastores/:datastore/size_estimate
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/datastores/:datastore/size_estimate?access_token={{mmrAdminSecret}}
   body: none
   auth: none
 }
 
-params:path {
-  datastore: {{datastore}}
+params:query {
+  access_token: {{mmrAdminSecret}}
 }
 
-query {
-  access_token: {{mmrAdminSecret}}
+params:path {
+  datastore: {{datastore}}
 }

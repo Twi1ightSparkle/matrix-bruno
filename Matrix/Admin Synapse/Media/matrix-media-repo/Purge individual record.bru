@@ -10,11 +10,11 @@ post {
   auth: none
 }
 
+params:query {
+  access_token: {{mmrAdminSecret}}
+}
+
 params:path {
   url: {{url}}
   mediaId: {{mediaId}}
-}
-
-query {
-  access_token: {{mmrAdminSecret}}
 }

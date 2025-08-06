@@ -5,16 +5,16 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/media/:url/:mediaId/attributes
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/media/:url/:mediaId/attributes?access_token={{mmrAdminSecret}}
   body: none
   auth: none
+}
+
+params:query {
+  access_token: {{mmrAdminSecret}}
 }
 
 params:path {
   url: {{url}}
   mediaId: {{mediaId}}
-}
-
-query {
-  access_token: {{mmrAdminSecret}}
 }

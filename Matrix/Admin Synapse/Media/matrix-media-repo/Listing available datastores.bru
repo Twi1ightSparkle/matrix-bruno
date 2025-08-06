@@ -5,11 +5,11 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/datastores
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/datastores?access_token={{mmrAdminSecret}}
   body: none
   auth: none
 }
 
-query {
+params:query {
   access_token: {{mmrAdminSecret}}
 }

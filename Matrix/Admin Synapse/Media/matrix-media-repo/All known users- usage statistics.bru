@@ -5,21 +5,21 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/usage/:url/users-stats?limit=100&order_by=media_length&dir=b
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/usage/:url/users-stats?access_token={{mmrAdminSecret}}&limit=100&order_by=media_length&dir=b
   body: none
   auth: none
 }
 
-params:path {
-  url: {{url}}
-}
-
-query {
+params:query {
   access_token: {{mmrAdminSecret}}
   limit: 100
   order_by: media_length
   dir: b
   ~from: 100
+}
+
+params:path {
+  url: {{url}}
 }
 
 tests {

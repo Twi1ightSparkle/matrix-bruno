@@ -5,11 +5,11 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/tasks/all
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/tasks/all?access_token={{mmrAdminSecret}}
   body: none
   auth: none
 }
 
-query {
+params:query {
   access_token: {{mmrAdminSecret}}
 }

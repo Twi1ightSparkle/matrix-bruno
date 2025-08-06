@@ -5,15 +5,15 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/usage/:url/users
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/usage/:url/users?access_token={{mmrAdminSecret}}
   body: none
   auth: none
 }
 
-params:path {
-  url: {{url}}
+params:query {
+  access_token: {{mmrAdminSecret}}
 }
 
-query {
-  access_token: {{mmrAdminSecret}}
+params:path {
+  url: {{url}}
 }
