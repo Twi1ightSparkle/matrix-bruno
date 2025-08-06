@@ -1,0 +1,16 @@
+meta {
+  name: Purge remote media
+  type: http
+  seq: 17
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/purge/remote?before_ts=1234567890000&access_token={{mmrAdminSecret}}
+  body: none
+  auth: none
+}
+
+params:query {
+  before_ts: 1234567890000
+  access_token: {{mmrAdminSecret}}
+}
