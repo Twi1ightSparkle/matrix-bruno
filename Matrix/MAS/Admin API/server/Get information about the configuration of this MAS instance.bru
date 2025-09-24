@@ -1,0 +1,11 @@
+meta {
+  name: Get information about the configuration of this MAS instance
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/site-config
+  body: none
+  auth: inherit
+}

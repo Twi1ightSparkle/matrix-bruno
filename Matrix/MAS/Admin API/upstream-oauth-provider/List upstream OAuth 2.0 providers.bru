@@ -1,0 +1,19 @@
+meta {
+  name: List upstream OAuth 2.0 providers
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-providers
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~page[before]: 
+  ~page[after]: 
+  ~page[first]: 
+  ~page[last]: 
+  ~filter[enabled]: true
+}
