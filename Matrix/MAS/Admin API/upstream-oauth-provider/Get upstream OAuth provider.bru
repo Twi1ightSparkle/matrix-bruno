@@ -1,11 +1,11 @@
 meta {
-  name: List upstream OAuth 2.0 providers
+  name: Get upstream OAuth provider
   type: http
-  seq: 5
+  seq: 2
 }
 
 get {
-  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-providers
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-providers/:providerId
   body: none
   auth: inherit
 }
@@ -17,4 +17,8 @@ params:query {
   ~page[last]: 
   ~count: true
   ~filter[enabled]: true
+}
+
+params:path {
+  providerId: 
 }

@@ -1,0 +1,15 @@
+meta {
+  name: Finish an OAuth 2.0 session
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-sessions/:oauthSessionId/finish
+  body: none
+  auth: inherit
+}
+
+params:path {
+  oauthSessionId: {{oauthSessionId}}
+}

@@ -1,0 +1,11 @@
+meta {
+  name: Get the version currently running
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/version
+  body: none
+  auth: inherit
+}

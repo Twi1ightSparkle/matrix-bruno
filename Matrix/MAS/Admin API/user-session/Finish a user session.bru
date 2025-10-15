@@ -1,0 +1,15 @@
+meta {
+  name: Finish a user session
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-sessions/:masUserSessionId/finish
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masUserSessionId: {{masUserSessionId}}
+}
