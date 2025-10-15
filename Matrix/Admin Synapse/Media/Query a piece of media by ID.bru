@@ -1,0 +1,16 @@
+meta {
+  name: Query a piece of media by ID
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/:url/:mediaId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  url: {{url}}
+  mediaId: {{mediaId}}
+}

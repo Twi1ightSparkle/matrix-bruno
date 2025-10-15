@@ -1,0 +1,15 @@
+meta {
+  name: Fetch Event
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/fetch_event/:eventId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  eventId: {{eventId}}
+}
