@@ -1,0 +1,24 @@
+meta {
+  name: Delete multiple devices
+  type: http
+  seq: 23
+}
+
+post {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v2/users/:userId/delete_devices
+  body: json
+  auth: inherit
+}
+
+params:path {
+  userId: {{userId}}
+}
+
+body:json {
+  {
+    "devices": [
+      "PHEITHIESE",
+      "EILIECHAGH"
+    ]
+  }
+}
