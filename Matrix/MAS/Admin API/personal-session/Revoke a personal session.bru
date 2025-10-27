@@ -1,0 +1,15 @@
+meta {
+  name: Revoke a personal session
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/personal-sessions/:masPersonalSessionId/revoke
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masPersonalSessionId: {{masPersonalSessionId}}
+}

@@ -1,0 +1,29 @@
+meta {
+  name: Create a new personal session with personal access token
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/personal-sessions
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "actor_user_id": "{{masUserId}}",
+    "human_name": "string",
+    "scope": "urn:matrix:client:api:* urn:synapse:admin:* urn:mas:admin",
+    "expires_in": null
+  }
+}
+
+script:post-response {
+  const body = res.body;
+  console.log(body);
+  if (body.data) {
+    bru.setEnvVar("masPersonalSessionId", body.data.id);
+    bru.setVar("userTokenRuntime", body.data.attributes.access_token);
+  }
+}

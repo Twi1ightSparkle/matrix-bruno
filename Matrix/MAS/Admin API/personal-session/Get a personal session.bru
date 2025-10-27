@@ -1,0 +1,15 @@
+meta {
+  name: Get a personal session
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/personal-sessions/:masPersonalSessionId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  masPersonalSessionId: {{masPersonalSessionId}}
+}

@@ -1,0 +1,27 @@
+meta {
+  name: List personal sessions
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/personal-sessions
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~filter[owner_user]: 
+  ~filter[owner_client]: {{masClientId}}
+  ~filter[actor_user]: {{masUserId}}
+  ~filter[expires_before]: string($date-time)
+  ~filter[expires_after]: string($date-time)
+  ~filter[scope]: urn:matrix:client:api:*
+  ~filter[status]: active|revoked
+  ~filter[expires]: false
+  ~page[before]: 
+  ~page[after]: 
+  ~page[first]: 
+  ~page[last]: 
+  ~count: true
+}

@@ -1,0 +1,30 @@
+meta {
+  name: Regenerate a personal session by replacing its personal access token
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/personal-sessions/:masPersonalSessionId/regenerate
+  body: json
+  auth: inherit
+}
+
+params:path {
+  masPersonalSessionId: {{masPersonalSessionId}}
+}
+
+body:json {
+  {
+    "expires_in": null
+  }
+}
+
+script:post-response {
+  const body = res.body;
+  console.log(body);
+  if (body.data) {
+    bru.setEnvVar("masPersonalSessionId", body.data.id);
+    bru.setVar("userTokenRuntime", body.data.attributes.access_token);
+  }
+}
