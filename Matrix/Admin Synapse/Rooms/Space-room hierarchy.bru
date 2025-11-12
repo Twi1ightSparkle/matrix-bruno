@@ -1,0 +1,21 @@
+meta {
+  name: Space/room hierarchy
+  type: http
+  seq: 21
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/:roomId/hierarchy
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~from: 0
+  ~limit: 50
+  ~max_depth: 10
+}
+
+params:path {
+  roomId: {{roomId}}
+}
