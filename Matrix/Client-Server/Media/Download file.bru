@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/media/r0/download/:url/:mediaId
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/v1/media/download/:url/:mediaId
   body: none
-  auth: none
+  auth: inherit
+}
+
+params:query {
+  ~admin_unsafely_bypass_quarantine: false
 }
 
 params:path {

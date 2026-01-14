@@ -5,11 +5,12 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_matrix/client/unstable/uk.half-shot.msc2666/user/mutual_rooms?user_id=@someone:example.com
+  url: {{protocol}}://{{delegatedURL}}/_matrix/client/unstable/uk.half-shot.msc2666/user/mutual_rooms?user_id
   body: none
   auth: inherit
 }
 
 params:query {
   user_id: @someone:example.com
+  ~from: abc123
 }

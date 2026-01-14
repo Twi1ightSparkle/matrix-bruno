@@ -1,0 +1,19 @@
+meta {
+  name: List joined rooms of a user
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/joined_rooms
+  body: none
+  auth: inherit
+}
+
+params:path {
+  userId: {{userId}}
+}
+
+docs {
+  Gets a list of all `room_id` that a specific `user_id` is joined to and is a member of (participating in).
+}

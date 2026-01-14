@@ -5,11 +5,15 @@ meta {
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/joined_rooms
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/memberships
   body: none
   auth: inherit
 }
 
 params:path {
   userId: {{userId}}
+}
+
+docs {
+  Gets a list of room memberships for a specific `user_id`. This endpoint differs from `List joined rooms of a user` in that it returns rooms with memberships other than "join".
 }
