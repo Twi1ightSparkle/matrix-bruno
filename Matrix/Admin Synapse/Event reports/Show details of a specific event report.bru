@@ -1,17 +1,17 @@
 meta {
-  name: Event report
+  name: Show details of a specific event report
   type: http
   seq: 2
 }
 
 get {
-  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/event_reports/:reportId
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/event_reports/:report_id
   body: none
   auth: inherit
 }
 
 params:path {
-  reportId: 13245
+  report_id: 12345
 }
 
 vars:post-response {

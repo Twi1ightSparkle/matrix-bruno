@@ -1,0 +1,15 @@
+meta {
+  name: Delete a specific event report
+  type: http
+  seq: 1
+}
+
+delete {
+  url: {{protocol}}://{{delegatedURL}}_synapse/admin/v1/event_reports/:report_id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  report_id: 12345
+}

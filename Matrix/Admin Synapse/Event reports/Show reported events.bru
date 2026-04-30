@@ -1,0 +1,20 @@
+meta {
+  name: Show reported events
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/event_reports
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~limit: 100
+  ~from: 101
+  ~dir: f
+  ~user_id: @reporter:{{url}}
+  ~room_id: $12345
+  ~event_sender_user_id: @event_sender:{{url}}
+}
