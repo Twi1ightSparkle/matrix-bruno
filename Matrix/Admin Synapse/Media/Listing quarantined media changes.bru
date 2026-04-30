@@ -1,0 +1,15 @@
+meta {
+  name: Listing quarantined media changes
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/quarantine_changes
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~from: 100
+}
