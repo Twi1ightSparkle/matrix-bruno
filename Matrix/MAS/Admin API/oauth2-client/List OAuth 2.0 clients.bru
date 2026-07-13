@@ -1,0 +1,25 @@
+meta {
+  name: List OAuth 2.0 clients
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-clients
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~filter[user]: {{masUserId}}
+  ~page[before]: 
+  ~page[after]: 
+  ~page[first]: 
+  ~page[last]: 
+  ~count: true
+  ~filter[client-kind]: dynamic|static
+  ~filter[client-name]: 
+  ~filter[client-uri]: 
+  ~filter[grant-type]: authorization_code|client_credentials|urn:ietf:params:oauth:grant-type:device_code
+  ~filter[has-active-sessions]: true|false
+}

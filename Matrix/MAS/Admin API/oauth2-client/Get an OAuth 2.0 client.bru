@@ -1,0 +1,15 @@
+meta {
+  name: Get an OAuth 2.0 client
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-clients/:oauthClientId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  oauthClientId: {{oauthClientId}}
+}
