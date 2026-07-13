@@ -18,6 +18,6 @@ script:pre-request {
   const userToken = bru.getEnvVar("userToken");
   
   if (userTokenRuntime && !userToken) {
-    bru.setEnvVar("userToken", userTokenRuntime);
+    bru.setVar("userToken", userTokenRuntime);
   }
 }

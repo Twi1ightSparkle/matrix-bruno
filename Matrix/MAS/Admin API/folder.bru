@@ -18,6 +18,6 @@ script:pre-request {
   const masAdminToken = bru.getEnvVar("masAdminToken");
   
   if (masAdminTokenRuntime && !masAdminToken) {
-    bru.setEnvVar("masAdminToken", masAdminTokenRuntime);
+    bru.setVar("masAdminToken", masAdminTokenRuntime);
   }
 }
