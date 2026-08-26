@@ -11,7 +11,7 @@ post {
 }
 
 params:path {
-  userId: 
+  userId: {{userId}}
 }
 
 body:json {
@@ -23,6 +23,10 @@ body:json {
     "reason": "Optional reason the redaction is being requested, ie 'spam', 'abuse', etc. This will be included in each redaction event, and be visible to users.",
     "limit": 1000
   }
+}
+
+vars:post-response {
+  redactId: res.body.redact_id
 }
 
 docs {
