@@ -1,0 +1,26 @@
+info:
+  name: Deactivate a user
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/:masUserId/deactivate"
+  params:
+    - name: masUserId
+      value: "{{masUserId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "skip_erase": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

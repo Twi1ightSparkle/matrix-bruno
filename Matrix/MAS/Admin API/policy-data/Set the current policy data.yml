@@ -1,0 +1,26 @@
+info:
+  name: Set the current policy data
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/policy-data"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "hello": "world",
+          "foo": 42,
+          "bar": true
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,30 @@
+info:
+  name: Delete room - create replacement room
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/:roomId"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "new_room_user_id": "@localUser:{{url}}",
+        "room_name": "Content Violation Notification",
+        "message": "Room has been shutdown due to content violations on this server. Please review our Terms of Service.",
+        "block": true,
+        "purge": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

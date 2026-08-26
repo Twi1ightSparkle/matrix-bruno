@@ -1,0 +1,26 @@
+info:
+  name: Add alias to room CS
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/directory/room/:roomAlias"
+  params:
+    - name: roomAlias
+      value: "%23alias:{{url}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "room_id": "{{roomId}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

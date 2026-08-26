@@ -1,0 +1,26 @@
+info:
+  name: Remove room from directory
+  type: http
+  seq: 14
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/v3/directory/list/room/:roomId"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "visibility": "private"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

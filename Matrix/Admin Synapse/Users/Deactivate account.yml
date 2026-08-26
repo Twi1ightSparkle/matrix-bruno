@@ -1,0 +1,26 @@
+info:
+  name: Deactivate account
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/deactivate/:userId"
+  params:
+    - name: userId
+      value: "{{userId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+      	"erase": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

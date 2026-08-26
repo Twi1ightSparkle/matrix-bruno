@@ -1,0 +1,32 @@
+info:
+  name: Redact event
+  type: http
+  seq: 14
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/redact/:eventId/:transactionId"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+    - name: eventId
+      value: "{{eventId}}"
+      type: path
+    - name: transactionId
+      value: "{{$timestamp}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "reason": "test"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,27 @@
+info:
+  name: Update token
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/registration_tokens/:token"
+  params:
+    - name: token
+      value: secr3t
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "uses_allowed": 10,
+        "expiry_time": 1640995200000
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

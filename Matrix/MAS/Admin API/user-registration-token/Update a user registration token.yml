@@ -1,0 +1,27 @@
+info:
+  name: Update a user registration token
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-registration-tokens/:masTokenId"
+  params:
+    - name: masTokenId
+      value: "{{masTokenId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "expires_at": "2025-06-06T10:10:48.609Z",
+        "usage_limit": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

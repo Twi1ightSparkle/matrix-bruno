@@ -1,0 +1,76 @@
+info:
+  name: List OAuth 2-0 sessions
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-sessions?filter[user]={{masUserId}}"
+  params:
+    - name: filter[user]
+      value: "{{masUserId}}"
+      type: query
+    - name: page[before]
+      value: ""
+      type: query
+      disabled: true
+    - name: page[after]
+      value: ""
+      type: query
+      disabled: true
+    - name: page[first]
+      value: ""
+      type: query
+      disabled: true
+    - name: page[last]
+      value: ""
+      type: query
+      disabled: true
+    - name: count
+      value: "true"
+      type: query
+      disabled: true
+    - name: filter[client]
+      value: ""
+      type: query
+      disabled: true
+    - name: filter[client-kind]
+      value: ""
+      type: query
+      disabled: true
+    - name: filter[user-session]
+      value: ""
+      type: query
+      disabled: true
+    - name: filter[scope]
+      value: ""
+      type: query
+      disabled: true
+    - name: filter[status]
+      value: ""
+      type: query
+      disabled: true
+    - name: filter[created-before]
+      value: 2010-10-10T09:00:00Z
+      type: query
+      disabled: true
+    - name: filter[created-after]
+      value: 2010-10-10T09:00:00Z
+      type: query
+      disabled: true
+    - name: filter[last-active-before]
+      value: 2010-10-10T09:00:00Z
+      type: query
+      disabled: true
+    - name: filter[last-active-after]
+      value: 2010-10-10T09:00:00Z
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,26 @@
+info:
+  name: Make room admin
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/rooms/:roomId/make_room_admin"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "user_id": "{{userId}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,27 @@
+info:
+  name: Delete room - no replacement
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v2/rooms/:roomId"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "block": false,
+        "purge": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

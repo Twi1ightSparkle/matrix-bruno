@@ -1,0 +1,20 @@
+info:
+  name: Delete room status by Room ID
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v2/rooms/:roomId/delete_status"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

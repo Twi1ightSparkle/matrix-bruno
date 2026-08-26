@@ -1,0 +1,20 @@
+info:
+  name: Reactivate a user
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/:masUserId/reactivate"
+  params:
+    - name: masUserId
+      value: "{{masUserId}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,11 @@
+info:
+  name: Admin OAuth Authenticate
+  type: folder
+  seq: 3
+
+docs:
+  content: |-
+    Authenticate using OAuth as a user with Admin permissions. <https://element-hq.github.io/matrix-authentication-service/topics/admin-api.html#automated-tools>
+
+    No config required, this uses user-interactive authentication through your browser.
+  type: text/markdown

@@ -1,0 +1,20 @@
+info:
+  name: Client-Server
+  type: folder
+  seq: 4
+
+request:
+  auth:
+    type: bearer
+    token: "{{userToken}}"
+  scripts:
+    - type: before-request
+      code: |-
+        // Use the standalone token variable if a MAS token is not set
+        // in the a environment .env file
+        const userTokenRuntime = bru.getVar("userTokenRuntime");
+        const userToken = bru.getEnvVar("userToken");
+
+        if (userTokenRuntime && !userToken) {
+          bru.setVar("userToken", userTokenRuntime);
+        }

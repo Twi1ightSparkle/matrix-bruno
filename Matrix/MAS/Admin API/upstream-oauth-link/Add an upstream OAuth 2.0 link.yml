@@ -1,0 +1,25 @@
+info:
+  name: Add an upstream OAuth 2.0 link
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/upstream-oauth-links"
+  body:
+    type: json
+    data: |-
+      {
+        "user_id": "{{masUserId}}",
+        "provider_id": "{{masOauthProviderId}}",
+        "subject": "string",
+        "human_account_name": "string"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

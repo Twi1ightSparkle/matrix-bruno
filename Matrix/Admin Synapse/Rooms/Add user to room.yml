@@ -1,0 +1,26 @@
+info:
+  name: Add user to room
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/join/:roomId"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "user_id": "@user:{{url}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

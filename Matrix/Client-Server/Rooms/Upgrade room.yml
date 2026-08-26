@@ -1,0 +1,26 @@
+info:
+  name: Upgrade room
+  type: http
+  seq: 25
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/v3/rooms/:roomId/upgrade"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "new_version": "9"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

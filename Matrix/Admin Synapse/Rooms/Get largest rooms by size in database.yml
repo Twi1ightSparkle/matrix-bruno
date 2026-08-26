@@ -1,0 +1,16 @@
+info:
+  name: Get largest rooms by size in database
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/statistics/database/rooms"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

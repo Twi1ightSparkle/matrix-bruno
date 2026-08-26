@@ -1,0 +1,35 @@
+info:
+  name: Set room power levels
+  type: http
+  seq: 20
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/state/m.room.power_levels"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "ban": 50,
+        "events": {},
+        "events_default": 50,
+        "kick": 50,
+        "redact": 50,
+        "state_default": 100,
+        "users": {
+          "@localUser:{{url}}": 100
+        },
+        "users_default": -1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

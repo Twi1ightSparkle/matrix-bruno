@@ -1,0 +1,41 @@
+info:
+  name: Deactivate account no SSO CS
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/v3/account/deactivate"
+  body:
+    type: json
+    data: |-
+      {
+        "auth": {
+          "type": "m.login.password",
+          "identifier": {
+            "type": "m.id.user",
+            "user": "{{userId}}"
+          },
+          "password": "password"
+        },
+        "erase": true
+      }
+  auth: inherit
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: ""
+        method: jsonq
+      variable:
+        name: userToken
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

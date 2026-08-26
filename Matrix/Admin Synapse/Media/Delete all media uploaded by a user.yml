@@ -1,0 +1,23 @@
+info:
+  name: Delete all media uploaded by a user
+  type: http
+  seq: 1
+
+http:
+  method: DELETE
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/media?limit=2500"
+  params:
+    - name: userId
+      value: "{{userId}}"
+      type: path
+    - name: limit
+      value: "2500"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

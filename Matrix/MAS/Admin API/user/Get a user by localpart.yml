@@ -1,0 +1,40 @@
+info:
+  name: Get a user by localpart
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/users/by-username/:localpart"
+  params:
+    - name: localpart
+      value: "{{localpart}}"
+      type: path
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        if (!bru.getEnvVar("localpart")) {
+          const mxid = bru.getEnvVar("userId");
+          if (!mxid) {
+            return;
+          }
+          
+          let localpart = mxid.replace("@", "").split(":")[0];
+          bru.setEnvVar("localpart", localpart);
+        }
+    - type: after-response
+      code: |-
+        const body = res.body;
+        if (body.data?.id) {
+          bru.setEnvVar("masUserId", body.data.id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

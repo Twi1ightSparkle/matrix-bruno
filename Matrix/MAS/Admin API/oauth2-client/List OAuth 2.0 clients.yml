@@ -1,0 +1,61 @@
+info:
+  name: List OAuth 2.0 clients
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-clients"
+  params:
+    - name: filter[user]
+      value: "{{masUserId}}"
+      type: query
+      disabled: true
+    - name: page[before]
+      value: ""
+      type: query
+      disabled: true
+    - name: page[after]
+      value: ""
+      type: query
+      disabled: true
+    - name: page[first]
+      value: ""
+      type: query
+      disabled: true
+    - name: page[last]
+      value: ""
+      type: query
+      disabled: true
+    - name: count
+      value: "true"
+      type: query
+      disabled: true
+    - name: filter[client-kind]
+      value: dynamic|static
+      type: query
+      disabled: true
+    - name: filter[client-name]
+      value: ""
+      type: query
+      disabled: true
+    - name: filter[client-uri]
+      value: ""
+      type: query
+      disabled: true
+    - name: filter[grant-type]
+      value: authorization_code|client_credentials|urn:ietf:params:oauth:grant-type:device_code
+      type: query
+      disabled: true
+    - name: filter[has-active-sessions]
+      value: true|false
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

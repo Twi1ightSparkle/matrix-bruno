@@ -1,0 +1,20 @@
+info:
+  name: Shadowunban
+  type: http
+  seq: 20
+
+http:
+  method: DELETE
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/shadow_ban"
+  params:
+    - name: userId
+      value: "{{userId}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

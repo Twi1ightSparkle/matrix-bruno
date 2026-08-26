@@ -1,0 +1,62 @@
+info:
+  name: Create or modify Account
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v2/users/:userId"
+  params:
+    - name: userId
+      value: "{{userId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "password": "user_password",
+        "displayname": "User",
+        "threepids": [
+          {
+            "medium": "email",
+            "address": "<user_mail_1>"
+          },
+          {
+            "medium": "email",
+            "address": "<user_mail_2>"
+          }
+        ],
+        "external_ids": [
+          {
+            "auth_provider": "<provider1>",
+            "external_id": "<user_id_provider_1>"
+          },
+          {
+            "auth_provider": "<provider2>",
+            "external_id": "<user_id_provider_2>"
+          }
+        ],
+        "avatar_url": "<avatar_url>",
+        "admin": false,
+        "deactivated": false,
+        "locked": false
+      }
+  auth: inherit
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: res.body.name
+        method: jsonq
+      variable:
+        name: userId
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

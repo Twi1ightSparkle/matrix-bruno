@@ -1,0 +1,25 @@
+info:
+  name: Purge media uploaded by a server
+  type: http
+  seq: 11
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/purge/server/:url?before_ts=1234567890000&access_token={{mmrAdminSecret}}"
+  params:
+    - name: before_ts
+      value: "1234567890000"
+      type: query
+    - name: access_token
+      value: "{{mmrAdminSecret}}"
+      type: query
+    - name: url
+      value: "{{url}}"
+      type: path
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

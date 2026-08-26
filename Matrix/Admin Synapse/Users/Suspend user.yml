@@ -1,0 +1,26 @@
+info:
+  name: Suspend user
+  type: http
+  seq: 21
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/suspend/:userId"
+  params:
+    - name: userId
+      value: "{{userId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "suspend": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,38 @@
+info:
+  name: 4 Refresh token
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{masAuthTokenEndpoint}}"
+  body:
+    type: form-urlencoded
+    data:
+      - name: grant_type
+        value: refresh_token
+      - name: client_id
+        value: "{{masAuthClientId}}"
+      - name: refresh_token
+        value: "{{masAdminRefreshToken}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        // Store the token in a standalone variable so it's not
+        // removed when the env file is edited
+        const body = res.body;
+        if (body.access_token) {
+          bru.setVar("masAdminTokenRuntime", body.access_token);
+        }
+        if (body.access_token) {
+          bru.setVar("masAdminRefreshToken", body.refresh_token);
+        }
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

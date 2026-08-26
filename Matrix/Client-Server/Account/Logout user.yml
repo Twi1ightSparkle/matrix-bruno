@@ -1,0 +1,27 @@
+info:
+  name: Logout user
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/logout"
+  auth: inherit
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: ""
+        method: jsonq
+      variable:
+        name: userToken
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

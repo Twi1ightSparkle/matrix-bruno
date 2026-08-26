@@ -1,0 +1,23 @@
+info:
+  name: Delete a device
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v2/users/:userId/devices/:deviceId"
+  params:
+    - name: deviceId
+      value: Elements Script
+      type: path
+    - name: userId
+      value: "{{userId}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

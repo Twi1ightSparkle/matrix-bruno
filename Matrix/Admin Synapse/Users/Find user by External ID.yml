@@ -1,0 +1,34 @@
+info:
+  name: Find user by External ID
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/auth_providers/:authProvider/users/:externalId"
+  params:
+    - name: authProvider
+      value: "{{authProvider}}"
+      type: path
+    - name: externalId
+      value: "{{externalId}}"
+      type: path
+  auth: inherit
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: res.body.user_id
+        method: jsonq
+      variable:
+        name: userId
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

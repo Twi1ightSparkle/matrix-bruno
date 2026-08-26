@@ -1,0 +1,33 @@
+info:
+  name: Send reaction
+  type: http
+  seq: 23
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/send/m.reaction/:transactionId"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+    - name: transactionId
+      value: "{{$timestamp}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "m.relates_to": {
+          "rel_type": "m.annotation",
+          "event_id": "{{eventId}}",
+          "key": "🦄"
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

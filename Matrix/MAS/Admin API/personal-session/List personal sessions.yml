@@ -1,0 +1,69 @@
+info:
+  name: List personal sessions
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/personal-sessions"
+  params:
+    - name: filter[owner_user]
+      value: ""
+      type: query
+      disabled: true
+    - name: filter[owner_client]
+      value: "{{masClientId}}"
+      type: query
+      disabled: true
+    - name: filter[actor_user]
+      value: "{{masUserId}}"
+      type: query
+      disabled: true
+    - name: filter[expires_before]
+      value: string($date-time)
+      type: query
+      disabled: true
+    - name: filter[expires_after]
+      value: string($date-time)
+      type: query
+      disabled: true
+    - name: filter[scope]
+      value: urn:matrix:client:api:*
+      type: query
+      disabled: true
+    - name: filter[status]
+      value: active|revoked
+      type: query
+      disabled: true
+    - name: filter[expires]
+      value: "false"
+      type: query
+      disabled: true
+    - name: page[before]
+      value: ""
+      type: query
+      disabled: true
+    - name: page[after]
+      value: ""
+      type: query
+      disabled: true
+    - name: page[first]
+      value: ""
+      type: query
+      disabled: true
+    - name: page[last]
+      value: ""
+      type: query
+      disabled: true
+    - name: count
+      value: "true"
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

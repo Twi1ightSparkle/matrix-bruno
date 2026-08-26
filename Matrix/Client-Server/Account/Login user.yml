@@ -1,0 +1,27 @@
+info:
+  name: Login user
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/login"
+  body:
+    type: json
+    data: |-
+      {
+        "type": "m.login.password",
+        "identifier": {
+          "type": "m.id.user",
+          "user": "localpart"
+        },
+        "password": "password",
+        "initial_device_display_name": "1gpmllpo"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

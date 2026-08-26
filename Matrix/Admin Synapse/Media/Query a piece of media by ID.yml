@@ -1,0 +1,23 @@
+info:
+  name: Query a piece of media by ID
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/media/:url/:mediaId"
+  params:
+    - name: url
+      value: "{{url}}"
+      type: path
+    - name: mediaId
+      value: "{{mediaId}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,30 @@
+info:
+  name: Send message
+  type: http
+  seq: 22
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/send/m.room.message/:transactionId"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+    - name: transactionId
+      value: "{{$timestamp}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "msgtype":"m.text",
+        "body":"some_text"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

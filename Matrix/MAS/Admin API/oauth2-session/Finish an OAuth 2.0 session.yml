@@ -1,0 +1,20 @@
+info:
+  name: Finish an OAuth 2.0 session
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/oauth2-sessions/:oauthSessionId/finish"
+  params:
+    - name: oauthSessionId
+      value: "{{oauthSessionId}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

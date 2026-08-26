@@ -1,0 +1,26 @@
+info:
+  name: Enable room encryption
+  type: http
+  seq: 8
+
+http:
+  method: PUT
+  url: hxxps://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/state/m.room.encryption/
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "algorithm": "m.megolm.v1.aes-sha2"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

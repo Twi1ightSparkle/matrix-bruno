@@ -1,0 +1,42 @@
+info:
+  name: Admin-Client Authenticate
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{protocol}}://{{masAdminEndpoint}}/oauth2/token"
+  body:
+    type: form-urlencoded
+    data:
+      - name: grant_type
+        value: client_credentials
+      - name: scope
+        value: urn:mas:admin
+  auth:
+    type: basic
+    username: "{{masClientId}}"
+    password: "{{masClientSecret}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        // Store the token in a standalone variable so it's not
+        // removed when the env file is edited
+        const body = res.body;
+        if (body.access_token) {
+          bru.setVar("masAdminTokenRuntime", body.access_token);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Authenticate using an Admin Client ID and Secret. <https://element-hq.github.io/matrix-authentication-service/topics/admin-api.html#automated-tools>
+
+  Set the MAS Client ID and Client Secret in the `.env` file.

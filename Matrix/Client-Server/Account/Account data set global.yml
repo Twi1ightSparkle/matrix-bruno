@@ -1,0 +1,26 @@
+info:
+  name: Account data set clobal
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/v3/user/:userId/account_data/type"
+  params:
+    - name: userId
+      value: "{{userId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "custom_account_data_key": "custom_config_value"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

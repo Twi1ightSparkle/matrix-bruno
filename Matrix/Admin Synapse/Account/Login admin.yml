@@ -1,0 +1,26 @@
+info:
+  name: Login admin
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/login"
+  body:
+    type: json
+    data: |-
+      {
+        "identifier": {
+          "type": "m.id.user",
+          "user": "admin"
+        },
+        "password": "secret",
+        "type": "m.login.password"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

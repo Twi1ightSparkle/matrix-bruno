@@ -1,0 +1,25 @@
+info:
+  name: Purge media uploaded in a room
+  type: http
+  seq: 14
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/purge/room/:roomId?before_ts=1234567890000&access_token={{mmrAdminSecret}}"
+  params:
+    - name: before_ts
+      value: "1234567890000"
+      type: query
+    - name: access_token
+      value: "{{mmrAdminSecret}}"
+      type: query
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

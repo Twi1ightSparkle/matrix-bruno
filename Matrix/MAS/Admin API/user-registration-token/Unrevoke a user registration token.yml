@@ -1,0 +1,20 @@
+info:
+  name: Unrevoke a user registration token
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{protocol}}://{{masAdminEndpoint}}/api/admin/v1/user-registration-tokens/:masTokenId/unrevoke"
+  params:
+    - name: masTokenId
+      value: "{{masTokenId}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

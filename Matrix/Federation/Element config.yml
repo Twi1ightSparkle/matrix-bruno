@@ -1,0 +1,15 @@
+info:
+  name: Element config
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{protocol}}://chat.{{url}}/config.json"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

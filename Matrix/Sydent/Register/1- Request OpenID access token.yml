@@ -1,0 +1,36 @@
+info:
+  name: 1- Request OpenID access token
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/user/:userId/openid/request_token"
+  params:
+    - name: userId
+      value: "{{userId}}"
+      type: path
+  body:
+    type: json
+    data: "{}"
+  auth:
+    type: bearer
+    token: "{{userToken}}"
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: res.body.access_token
+        method: jsonq
+      variable:
+        name: openidToken
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

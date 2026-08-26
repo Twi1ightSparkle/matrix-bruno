@@ -1,0 +1,42 @@
+info:
+  name: 3 Get an Access Token
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{masAuthTokenEndpoint}}"
+  body:
+    type: form-urlencoded
+    data:
+      - name: code
+        value: paste_code_here
+      - name: grant_type
+        value: authorization_code
+      - name: redirect_uri
+        value: https://twi1ightsparkle.github.io/matrix-bruno/mas-auth-code.html
+      - name: client_id
+        value: "{{masAuthClientId}}"
+      - name: code_verifier
+        value: "{{masAuthCodeVerifier}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        // Store the token in a standalone variable so it's not
+        // removed when the env file is edited
+        const body = res.body;
+        if (body.access_token) {
+          bru.setVar("masAdminTokenRuntime", body.access_token);
+        }
+        if (body.access_token) {
+          bru.setVar("masAdminRefreshToken", body.refresh_token);
+        }
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

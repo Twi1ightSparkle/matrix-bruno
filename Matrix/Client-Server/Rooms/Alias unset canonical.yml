@@ -1,0 +1,26 @@
+info:
+  name: Alias unset canonical
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/state/m.room.canonical_alias"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "use-output-from-the-get-request: alt_aliases": []
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

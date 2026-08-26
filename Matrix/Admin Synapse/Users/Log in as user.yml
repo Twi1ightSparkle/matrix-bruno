@@ -1,0 +1,23 @@
+info:
+  name: Log in as user
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_synapse/admin/v1/users/:userId/login"
+  params:
+    - name: userId
+      value: "{{userId}}"
+      type: path
+  body:
+    type: json
+    data: "{}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,25 @@
+info:
+  name: Quarantine media - matrix-media-repo
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/media/unstable/admin/quarantine/:url/:mediaId?access_token={{mmrAdminSecret}}"
+  params:
+    - name: access_token
+      value: "{{mmrAdminSecret}}"
+      type: query
+    - name: url
+      value: "{{url}}"
+      type: path
+    - name: mediaId
+      value: "{{mediaId}}"
+      type: path
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

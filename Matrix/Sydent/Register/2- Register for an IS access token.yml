@@ -1,0 +1,35 @@
+info:
+  name: 2- Register for an IS access token
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: https://vector.im/_matrix/identity/v2/account/register
+  body:
+    type: json
+    data: |-
+      {
+        "access_token": "{{openidToken}}",
+        "token_type": "Bearer",
+        "matrix_server_name": "{{url}}",
+        "expires_in": 3600
+      }
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: res.body.access_token
+        method: jsonq
+      variable:
+        name: sydentToken
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

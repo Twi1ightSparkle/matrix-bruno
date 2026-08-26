@@ -1,0 +1,7 @@
+info:
+  name: oauth2-client
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit

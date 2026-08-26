@@ -1,0 +1,30 @@
+info:
+  name: Kick user from room
+  type: http
+  seq: 13
+
+http:
+  method: PUT
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/client/r0/rooms/:roomId/state/m.room.member/:userId"
+  params:
+    - name: roomId
+      value: "{{roomId}}"
+      type: path
+    - name: userId
+      value: "{{userId}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "membership": "leave",
+        "reason": "reasonForKick"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

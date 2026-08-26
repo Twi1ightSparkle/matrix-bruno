@@ -1,0 +1,15 @@
+info:
+  name: Signing key this server
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{protocol}}://{{delegatedURL}}/_matrix/key/v2/server"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

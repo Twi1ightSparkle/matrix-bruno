@@ -1,0 +1,9 @@
+info:
+  name: Sydent
+  type: folder
+  seq: 6
+
+request:
+  headers:
+    - name: Authorization
+      value: Bearer {{sydentToken}}
